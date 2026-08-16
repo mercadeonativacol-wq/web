@@ -1,0 +1,20 @@
+{
+  "id": "001",
+  "title": "Camiseta Nativa Crew",
+  "price": 50000,
+  "description": "Este texto es para hacer una demostración",
+  "category": "Camisetas",
+  "image": "001.png",
+  "images": [
+    "001.png",
+    "001b.png",
+    "001c.png"
+  ],
+  "embeds": [
+    "https://sketchfab.com/models/70a11f6d3e2149fabd8999310113e379/embed"
+  ],
+  "badge": "Bestseller",
+  "material": "Algodón tibetano",
+  "dimensions": "L, M, S",
+  "stock": 12
+}

@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nativa Bisutería — Tienda Artesanal</title>
+
+<!-- Favicon (usa el mismo logo.svg del header; añade también los .png de respaldo si los tienes) -->
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- SEO básico -->
+<meta name="description" content="Nativa Bisutería — Bisutería artesanal colombiana hecha a mano con materiales naturales y técnicas tradicionales. Piezas únicas inspiradas en nuestras raíces.">
+<meta name="keywords" content="bisutería artesanal, joyería hecha a mano, accesorios artesanales Colombia, Nativa Bisutería">
+<meta name="author" content="Nativa Bisutería">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://nativacol.shop/">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nativa Bisutería">
+<meta property="og:title" content="Nativa Bisutería — Piezas Únicas, Hechas a Mano">
+<meta property="og:description" content="Bisutería artesanal colombiana hecha a mano con materiales naturales y técnicas tradicionales. Descubre piezas únicas inspiradas en nuestras raíces.">
+<meta property="og:image" content="homepage/001.jpg">
+<meta property="og:url" content="https://nativacol.shop/">
+<meta property="og:locale" content="es_CO">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nativa Bisutería — Piezas Únicas, Hechas a Mano">
+<meta name="twitter:description" content="Bisutería artesanal colombiana hecha a mano con materiales naturales y técnicas tradicionales.">
+<meta name="twitter:image" content="homepage/001.jpg">
+
+<meta name="theme-color" content="#5c1a28">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
+
+  :root {
+    --vino: #5c1a28;
+    --vino-oscuro: #48131f;
+    --dorado: #d4a34f;
+    --dorado-suave: #e0c292;
+    --crema: #f1e5d2;
+    --crema-clara: #faf7f1;
+    --marfil: #fffdf9;
+    --negro: #2a2524;
+    --gris: #766d68;
+    --gris-claro: #ded6cc;
+    --linea: rgba(92, 26, 40, .14);
+    --sombra: 0 14px 40px rgba(72, 19, 31, .1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: var(--marfil);
+    color: var(--negro);
+    line-height: 1.65;
+  }
+
+  button, input, textarea { font: inherit; }
+
+  button { -webkit-tap-highlight-color: transparent; }
+
+  /* ---------- HEADER ---------- */
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 110px;
+    padding: 16px clamp(20px, 5vw, 72px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: rgba(255, 253, 249, .96);
+    border-bottom: 1px solid var(--linea);
+    backdrop-filter: blur(14px);
+  }
+
+  .logo-area {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .logo-svg {
+    display: block;
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+  }
+
+  .cart-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-width: 116px;
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid var(--vino);
+    border-radius: 2px;
+    outline: none;
+    background: var(--marfil);
+    color: var(--vino);
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+    transition:
+      background-color .25s ease,
+      color .25s ease,
+      border-color .25s ease,
+      transform .2s ease;
+  }
+
+  .cart-btn::before {
+    content: '';
+    width: 14px;
+    height: 12px;
+    border: 1.5px solid currentColor;
+    border-top: 0;
+    border-radius: 1px 1px 3px 3px;
+    transform: translateY(-1px);
+  }
+
+  .cart-btn::after {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 12px;
+    width: 7px;
+    height: 5px;
+    border-top: 1.5px solid currentColor;
+    transform: rotate(22deg);
+    transform-origin: right center;
+  }
+
+  .cart-btn:hover {
+    background: var(--vino);
+    color: var(--marfil);
+    transform: translateY(-1px);
+  }
+
+  .cart-btn:active { transform: translateY(0); }
+
+  .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--marfil);
+    border-radius: 50%;
+    background: var(--dorado);
+    color: var(--vino);
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  /* ---------- HEADER NAV (Tienda / Nosotros) ---------- */
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-link {
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--gris);
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color .2s ease, border-color .2s ease;
+  }
+
+  .nav-link:hover { color: var(--vino); }
+
+  .nav-link.active {
+    color: var(--vino);
+    border-color: var(--vino);
+  }
+
+  @media (max-width: 640px) {
+    .header-nav { gap: 2px; }
+    .nav-link { padding: 8px 10px; font-size: 8px; letter-spacing: 1.4px; }
+  }
+
+  /* ---------- VIEWS (Tienda vs. Sección Corporativa) ---------- */
+
+  .corporate-section { display: none; }
+  .corporate-section.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .store-view { display: none; }
+  .store-view.active { display: block; }
+
+  .corporate-back-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 26px;
+    border: 1px solid var(--dorado);
+    background: transparent;
+    color: var(--dorado-suave);
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: background-color .25s ease, color .25s ease;
+  }
+
+  .corporate-back-btn:hover {
+    background: var(--dorado);
+    color: var(--vino-oscuro);
+  }
+
+  /* ---------- ORGANIGRAMA (ACORDEÓN) ---------- */
+
+  .org-chart {
+    position: relative;
+    z-index: 2;
+    width: min(760px, 100%);
+    margin: 56px auto 0;
+    text-align: left;
+  }
+
+  .org-chart-title {
+    margin-bottom: 20px;
+    color: var(--dorado);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .org-accordion {
+    border-top: 1px solid rgba(224, 194, 146, .3);
+  }
+
+  .org-item { border-bottom: 1px solid rgba(224, 194, 146, .3); }
+
+  .org-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 17px 4px;
+    border: 0;
+    background: transparent;
+    color: var(--marfil);
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: left;
+    text-transform: uppercase;
+    transition: color .2s ease;
+  }
+
+  .org-item-header:hover { color: var(--dorado); }
+
+  .org-item-icon {
+    flex-shrink: 0;
+    color: var(--dorado);
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1;
+    transition: transform .3s ease;
+  }
+
+  .org-item.open .org-item-icon { transform: rotate(45deg); }
+
+  .org-item-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+  }
+
+  .org-item-body p {
+    padding: 0 4px 18px;
+    color: var(--crema-clara);
+    font-size: 11px;
+    line-height: 1.85;
+  }
+
+  /* ---------- LEGAL / CONTACTO / SOCIAL ---------- */
+
+  .corporate-legal {
+    position: relative;
+    z-index: 2;
+    width: min(760px, 100%);
+    margin: 56px auto 0;
+    padding-top: 40px;
+    border-top: 1px solid rgba(224, 194, 146, .3);
+    text-align: left;
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 50px);
+  }
+
+  .legal-block h4 {
+    margin-bottom: 12px;
+    color: var(--dorado);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  .legal-block p {
+    color: var(--crema-clara);
+    font-size: 10.5px;
+    line-height: 1.85;
+  }
+
+  .legal-block a {
+    color: var(--dorado-suave);
+    text-decoration: underline;
+  }
+
+  .legal-terms-toggle {
+    margin-top: 12px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--dorado-suave);
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  .legal-terms-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease;
+  }
+
+  .legal-terms-body p {
+    margin-top: 12px;
+    font-size: 10px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--dorado-suave);
+    border-radius: 50%;
+    color: var(--dorado-suave);
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  .social-btn svg { width: 15px; height: 15px; fill: currentColor; }
+
+  .social-btn:hover {
+    background: var(--dorado);
+    border-color: var(--dorado);
+    color: var(--vino-oscuro);
+  }
+
+  @media (max-width: 600px) {
+    .legal-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- CORPORATE / VISION & MISIÓN (SLIDES) ---------- */
+
+  .corporate-section {
+    position: relative;
+    overflow: hidden;
+    min-height: min(88vh, 720px);
+    background: var(--vino-oscuro);
+  }
+
+  .corporate-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .corporate-slide {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+  }
+
+  .corporate-slide.active { opacity: 1; }
+
+  .corporate-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(72, 19, 31, .55) 0%, rgba(72, 19, 31, .62) 45%, rgba(72, 19, 31, .82) 100%);
+  }
+
+  .corporate-section.no-slides {
+    background:
+      radial-gradient(circle at 30% 20%, rgba(224, 194, 146, .16), transparent 55%),
+      var(--vino-oscuro);
+  }
+
+  .corporate-content {
+    position: relative;
+    z-index: 2;
+    width: min(1080px, calc(100% - 48px));
+    padding: clamp(64px, 9vw, 100px) 0;
+    text-align: center;
+  }
+
+  .corporate-eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--dorado);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .corporate-title {
+    margin-bottom: 44px;
+    color: var(--marfil);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .corporate-title::after {
+    content: '✦';
+    display: block;
+    margin: 20px auto 0;
+    color: var(--dorado);
+    font-size: 15px;
+  }
+
+  .corporate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 60px);
+    text-align: left;
+  }
+
+  .corporate-block {
+    padding: 26px 0 0;
+    border-top: 1px solid rgba(224, 194, 146, .35);
+  }
+
+  .corporate-block h3 {
+    margin-bottom: 14px;
+    color: var(--dorado);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .corporate-block p {
+    color: var(--crema-clara);
+    font-size: 12px;
+    line-height: 1.9;
+    letter-spacing: .3px;
+  }
+
+  .corporate-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 26px;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+
+  .corporate-dots span {
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--dorado-suave);
+    border-radius: 50%;
+    background: transparent;
+    transition: background-color .3s ease;
+  }
+
+  .corporate-dots span.active { background: var(--dorado); }
+
+  @media (max-width: 768px) {
+    .corporate-section { min-height: min(92vh, 620px); }
+    .corporate-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ---------- HERO / EDITORIAL ---------- */
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(70px, 10vw, 120px) 24px clamp(64px, 8vw, 96px);
+    text-align: center;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(224, 194, 146, .22), transparent 42%),
+      var(--crema-clara);
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .hero::before,
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: min(22vw, 280px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--dorado));
+  }
+
+  .hero::before { left: 0; }
+  .hero::after {
+    right: 0;
+    transform: rotate(180deg);
+  }
+
+  .hero h2 {
+    position: relative;
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: .92;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero h2::after {
+    content: '✦';
+    display: block;
+    margin: 22px auto 16px;
+    color: var(--dorado);
+    font-family: Georgia, serif;
+    font-size: 17px;
+  }
+
+  .hero p {
+    max-width: 660px;
+    margin: 0 auto;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.9;
+    letter-spacing: .55px;
+  }
+
+  /* ---------- HERO SLIDESHOW ---------- */
+
+  .hero {
+    min-height: min(72vh, 680px);
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+  }
+
+  .hero-slide.active { opacity: 1; }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(180deg, rgba(255,253,249,.30) 0%, rgba(255,253,249,.68) 48%, rgba(255,253,249,.88) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: min(900px, calc(100% - 48px));
+    padding: 48px 0 68px;
+  }
+
+  .hero-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+
+  .hero-dots span {
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--vino);
+    border-radius: 50%;
+    background: transparent;
+    transition: background-color .3s ease, transform .3s ease;
+  }
+
+  .hero-dots span.active {
+    background: var(--vino);
+    transform: scale(1.15);
+  }
+
+  .hero.no-slides {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(224, 194, 146, .22), transparent 42%),
+      var(--crema-clara);
+  }
+
+  @media (max-width: 768px) {
+    .hero { min-height: 520px; }
+    .hero-content { width: min(100% - 36px, 700px); padding: 42px 0 58px; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(255,253,249,.42) 0%, rgba(255,253,249,.76) 52%, rgba(255,253,249,.92) 100%); }
+  }
+
+  /* ---------- FILTERS ---------- */
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 34px 24px 30px;
+    flex-wrap: wrap;
+    background: var(--marfil);
+  }
+
+  .filter-btn {
+    position: relative;
+    padding: 8px 18px;
+    border: 0;
+    border-right: 1px solid var(--gris-claro);
+    background: transparent;
+    color: var(--gris);
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color .2s ease;
+  }
+
+  .filter-btn:first-child { border-left: 1px solid var(--gris-claro); }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    color: var(--vino);
+  }
+
+  .filter-btn.active::after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 2px;
+    height: 1px;
+    background: var(--dorado);
+  }
+
+  /* ---------- LOADING ---------- */
+
+  .loading-bar {
+    padding: 70px 20px;
+    text-align: center;
+    color: var(--gris);
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .loading-bar .spinner {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 16px;
+    border: 1px solid var(--gris-claro);
+    border-top-color: var(--vino);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- PRODUCTS ---------- */
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: clamp(18px, 2.8vw, 34px);
+    width: min(1240px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 0 0 92px;
+  }
+
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--marfil);
+    border: 1px solid var(--linea);
+    box-shadow: none;
+    cursor: pointer;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(92, 26, 40, .26);
+    box-shadow: var(--sombra);
+  }
+
+  .product-img {
+    width: 100%;
+    aspect-ratio: 1 / 1.08;
+    height: auto;
+    background: var(--crema);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+
+  .product-card:hover .product-img img { transform: scale(1.045); }
+
+  .image-fallback {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.28), transparent),
+      var(--crema);
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 6px 10px;
+    background: var(--vino);
+    color: var(--marfil);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  .product-info { padding: 21px 20px 22px; }
+
+  .product-info h3 {
+    margin-bottom: 8px;
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: .7px;
+  }
+
+  .product-info p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 15px;
+    color: var(--gris);
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .product-meta {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .product-meta span {
+    padding: 4px 8px;
+    border: 1px solid rgba(92, 26, 40, .11);
+    color: var(--gris);
+    background: var(--crema-clara);
+    font-size: 8px;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 12px;
+    padding-top: 15px;
+    border-top: 1px solid var(--linea);
+  }
+
+  .price {
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 27px;
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  .stock-tag {
+    margin-top: 5px;
+    color: var(--gris);
+    font-size: 8px;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+  }
+
+  .add-btn {
+    padding: 10px 14px;
+    border: 1px solid var(--vino);
+    border-radius: 0;
+    background: var(--vino);
+    color: var(--marfil);
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    transition: .25s ease;
+  }
+
+  .add-btn:hover { background: transparent; color: var(--vino); }
+
+  .add-btn:disabled {
+    border-color: var(--gris-claro);
+    background: var(--gris-claro);
+    color: var(--gris);
+    cursor: not-allowed;
+  }
+
+  /* ---------- CART ---------- */
+
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(72, 19, 31, .4);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease;
+  }
+
+  .cart-overlay.open { opacity: 1; visibility: visible; }
+
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 201;
+    width: min(440px, 100%);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--marfil);
+    border-left: 1px solid var(--linea);
+    transform: translateX(100%);
+    transition: transform .45s cubic-bezier(.16,1,.3,1);
+  }
+
+  .cart-drawer.open { transform: translateX(0); }
+
+  .cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 26px;
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .cart-header h3 {
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .close-cart {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--gris-claro);
+    background: transparent;
+    color: var(--vino);
+    cursor: pointer;
+    font-size: 21px;
+    line-height: 1;
+  }
+
+  .cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 26px;
+  }
+
+  .cart-item {
+    display: flex;
+    gap: 14px;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .cart-item-img {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--crema);
+  }
+
+  .cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cart-item-info { flex: 1; min-width: 0; }
+
+  .cart-item-info h4 {
+    margin-bottom: 4px;
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .cart-item-info .item-price {
+    color: var(--gris);
+    font-size: 10px;
+  }
+
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 9px;
+    font-size: 11px;
+  }
+
+  .qty-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--gris-claro);
+    background: transparent;
+    color: var(--vino);
+    cursor: pointer;
+  }
+
+  .remove-item {
+    margin-top: 5px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--gris);
+    cursor: pointer;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  .cart-footer {
+    padding: 25px 26px 28px;
+    border-top: 1px solid var(--linea);
+    background: var(--crema-clara);
+  }
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 17px;
+    color: var(--negro);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+  }
+
+  .cart-total span:last-child { color: var(--vino); font-weight: 600; }
+
+  .checkout-btn {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--vino);
+    border-radius: 0;
+    background: var(--vino);
+    color: var(--marfil);
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: .25s ease;
+  }
+
+  .checkout-btn:hover { background: transparent; color: var(--vino); }
+
+  .empty-cart {
+    padding: 70px 20px;
+    color: var(--gris);
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+  }
+
+  /* ---------- CHECKOUT ---------- */
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(72, 19, 31, .55);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease;
+  }
+
+  .modal-overlay.open { opacity: 1; visibility: visible; }
+
+  .modal {
+    width: min(500px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 34px;
+    background: var(--marfil);
+    border: 1px solid var(--linea);
+    border-top: 3px solid var(--vino);
+    transform: translateY(10px);
+    transition: transform .3s ease;
+  }
+
+  .modal-overlay.open .modal { transform: translateY(0); }
+
+  .modal h3 {
+    margin-bottom: 7px;
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .modal > p {
+    margin-bottom: 25px;
+    color: var(--gris);
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .form-group { margin-bottom: 15px; }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--vino);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--gris-claro);
+    border-radius: 0;
+    outline: none;
+    background: var(--marfil);
+    color: var(--negro);
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 11px;
+    transition: border-color .2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--vino); }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .order-summary {
+    margin: 20px 0;
+    padding: 17px;
+    background: var(--crema);
+    border-left: 2px solid var(--dorado);
+  }
+
+  .order-summary h4 {
+    margin-bottom: 10px;
+    color: var(--vino);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(92,26,40,.09);
+    color: var(--gris);
+    font-size: 10px;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--dorado);
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 23px;
+  }
+
+  .modal-actions button {
+    flex: 1;
+    padding: 13px;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    transition: .25s ease;
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--gris-claro);
+    background: transparent;
+    color: var(--gris);
+  }
+
+  .btn-primary {
+    border: 1px solid var(--vino);
+    background: var(--vino);
+    color: var(--marfil);
+  }
+
+  .btn-primary:hover { background: transparent; color: var(--vino); }
+
+  /* ---------- PRODUCT DETAIL MODAL ---------- */
+
+  .product-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 3vw, 40px);
+    background: rgba(72, 19, 31, .62);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease;
+  }
+
+  .product-modal-overlay.open { opacity: 1; visibility: visible; }
+
+  .product-modal {
+    position: relative;
+    width: min(1080px, 100%);
+    max-height: 94vh;
+    overflow-y: auto;
+    background: var(--marfil);
+    border: 1px solid var(--linea);
+    border-top: 3px solid var(--vino);
+    transform: translateY(14px);
+    transition: transform .35s ease;
+  }
+
+  .product-modal-overlay.open .product-modal { transform: translateY(0); }
+
+  .product-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 3;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gris-claro);
+    background: var(--marfil);
+    color: var(--vino);
+    cursor: pointer;
+    font-size: 21px;
+    line-height: 1;
+  }
+
+  .product-modal-body {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+  }
+
+  .product-modal-gallery {
+    background: var(--crema);
+    padding: 22px;
+  }
+
+  .product-modal-main {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--crema-clara);
+    border: 1px solid var(--linea);
+  }
+
+  .product-modal-main img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-modal-main iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .product-modal-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .gallery-thumb {
+    position: relative;
+    width: 62px;
+    height: 62px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--linea);
+    background: var(--crema-clara);
+    cursor: pointer;
+    opacity: .62;
+    transition: opacity .2s ease, border-color .2s ease;
+  }
+
+  .gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-thumb.active,
+  .gallery-thumb:hover {
+    opacity: 1;
+    border-color: var(--vino);
+  }
+
+  .thumb-3d-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: var(--vino);
+    color: var(--dorado-suave);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .product-modal-info {
+    padding: clamp(28px, 4vw, 46px) clamp(24px, 4vw, 42px);
+  }
+
+  .product-modal-info h3 {
+    margin-bottom: 10px;
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(30px, 3vw, 38px);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: .6px;
+  }
+
+  .product-modal-info .product-meta { margin-bottom: 18px; }
+
+  .product-modal-info > p {
+    margin-bottom: 24px;
+    color: var(--gris);
+    font-size: 11px;
+    line-height: 1.9;
+  }
+
+  .product-modal-footer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--linea);
+  }
+
+  .product-modal-footer .add-btn { padding: 13px 22px; }
+
+  @media (max-width: 768px) {
+    .product-modal-body { grid-template-columns: 1fr; }
+    .product-modal { max-height: 96vh; }
+  }
+
+  /* ---------- TOAST / FOOTER ---------- */
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    z-index: 400;
+    max-width: calc(100% - 32px);
+    padding: 12px 22px;
+    border: 1px solid var(--dorado);
+    background: var(--vino);
+    color: var(--marfil);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transform: translateX(-50%) translateY(90px);
+    opacity: 0;
+    transition: .4s cubic-bezier(.16,1,.3,1);
+  }
+
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  .footer {
+    padding: 48px 24px;
+    background: var(--vino);
+    color: var(--dorado-suave);
+    text-align: center;
+  }
+
+  .footer::before {
+    content: '✦';
+    display: block;
+    margin-bottom: 10px;
+    color: var(--dorado);
+    font-family: Georgia, serif;
+  }
+
+  .footer p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 1.5px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 768px) {
+    .header {
+      min-height: 78px;
+      padding: 13px 18px;
+    }
+
+    .logo-svg { width: 90px; height: 100px; objectfit: fill; }
+
+    .cart-btn {
+      min-width: 98px;
+      height: 38px;
+      padding: 0 12px;
+      font-size: 8px;
+      letter-spacing: 1.6px;
+    }
+
+    .cart-btn::before {
+      width: 12px;
+      height: 10px;
+    }
+
+    .cart-btn::after {
+      left: 21px;
+      top: 11px;
+      width: 6px;
+    }
+
+    .hero { padding: 68px 22px 60px; }
+
+    .hero::before,
+    .hero::after { display: none; }
+
+    .hero h2 { font-size: 42px; }
+
+    .hero p { font-size: 10px; }
+
+    .filters {
+      justify-content: flex-start;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding: 22px 18px 26px;
+      scrollbar-width: none;
+    }
+
+    .filters::-webkit-scrollbar { display: none; }
+
+    .filter-btn { flex: 0 0 auto; }
+
+    .products {
+      width: min(100% - 28px, 520px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding-bottom: 60px;
+    }
+
+    .product-info { padding: 16px 14px 17px; }
+
+    .product-info h3 { font-size: 21px; }
+
+    .product-info p { font-size: 9px; }
+
+    .product-meta span { font-size: 7px; }
+
+    .price { font-size: 23px; }
+
+    .add-btn {
+      padding: 9px 9px;
+      font-size: 7px;
+      letter-spacing: 1px;
+    }
+
+    .product-footer {
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .product-footer > div:first-child {
+      width: 100%;
+    }
+
+    .add-btn { width: 100%; }
+
+    .modal { padding: 26px 20px; }
+  }
+
+  @media (max-width: 430px) {
+    .hero h2 { font-size: 36px; }
+
+    .products {
+      grid-template-columns: 1fr 1fr;
+      width: calc(100% - 20px);
+      gap: 9px;
+    }
+
+    .product-img { aspect-ratio: 1 / 1.12; }
+
+    .product-info h3 { font-size: 19px; }
+
+    .product-info p {
+      -webkit-line-clamp: 3;
+      min-height: 38px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-area">
+    <img class="logo-svg" src="logo.svg" alt="Nativa Bisutería" width="80" height="80">
+  </div>
+  <nav class="header-nav">
+    <button class="nav-link active" data-view="store" onclick="switchView('store')">Tienda</button>
+    <button class="nav-link" data-view="corporate" onclick="switchView('corporate')">Nosotros</button>
+  </nav>
+  <button class="cart-btn" onclick="toggleCart()">
+    Carrito
+    <span class="cart-count" id="cartCount" style="display:none">0</span>
+  </button>
+</header>
+
+<section class="corporate-section" id="corporateView">
+  <div class="corporate-content">
+    <span class="corporate-eyebrow">Nativa Bisutería</span>
+    <h2 class="corporate-title">Quiénes Somos</h2>
+    <div class="corporate-grid">
+      <div class="corporate-block">
+        <h3>Visión</h3>
+        <p>Ser la marca de bisutería artesanal más reconocida por preservar y reinventar las raíces de nuestra cultura, llevando piezas únicas hechas a mano a hogares y personas que valoran lo genuino, lo natural y lo hecho con propósito.</p>
+      </div>
+      <div class="corporate-block">
+        <h3>Misión</h3>
+        <p>Diseñar y elaborar bisutería artesanal con materiales naturales y técnicas tradicionales, apoyando el trabajo manual local y ofreciendo a cada cliente una pieza con historia, identidad y calidad excepcional.</p>
+      </div>
+    </div>
+
+    <div class="org-chart">
+      <h3 class="org-chart-title">Nuestro Organigrama</h3>
+      <div class="org-accordion" id="orgAccordion">
+        <div class="org-item">
+          <button class="org-item-header" onclick="toggleOrgItem(this)">
+            <span>Gerencia</span>
+            <span class="org-item-icon">+</span>
+          </button>
+          <div class="org-item-body">
+            <p>Dirección general de la marca: define la visión estratégica, toma las decisiones clave y vela por el crecimiento sostenible de Nativa Bisutería.</p>
+          </div>
+        </div>
+        <div class="org-item">
+          <button class="org-item-header" onclick="toggleOrgItem(this)">
+            <span>Mercadeo</span>
+            <span class="org-item-icon">+</span>
+          </button>
+          <div class="org-item-body">
+            <p>Construye la identidad de la marca, gestiona redes sociales, campañas y la relación con nuestra comunidad de clientes.</p>
+          </div>
+        </div>
+        <div class="org-item">
+          <button class="org-item-header" onclick="toggleOrgItem(this)">
+            <span>Compras</span>
+            <span class="org-item-icon">+</span>
+          </button>
+          <div class="org-item-body">
+            <p>Selecciona y negocia con proveedores de materiales naturales, garantizando calidad y trazabilidad en cada insumo.</p>
+          </div>
+        </div>
+        <div class="org-item">
+          <button class="org-item-header" onclick="toggleOrgItem(this)">
+            <span>Finanzas</span>
+            <span class="org-item-icon">+</span>
+          </button>
+          <div class="org-item-body">
+            <p>Administra los recursos de la empresa, la contabilidad y la planeación financiera para sostener el crecimiento del negocio.</p>
+          </div>
+        </div>
+        <div class="org-item">
+          <button class="org-item-header" onclick="toggleOrgItem(this)">
+            <span>Producción</span>
+            <span class="org-item-icon">+</span>
+          </button>
+          <div class="org-item-body">
+            <p>El corazón artesanal de Nativa: elabora cada pieza a mano, cuida los tiempos de entrega y el control de calidad del catálogo.</p>
+          </div>
+        </div>
+        <div class="org-item">
+          <button class="org-item-header" onclick="toggleOrgItem(this)">
+            <span>Recursos Humanos</span>
+            <span class="org-item-icon">+</span>
+          </button>
+          <div class="org-item-body">
+            <p>Acompaña al equipo de artesanos y colaboradores, gestionando bienestar, formación y el ambiente de trabajo de la empresa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="corporate-legal">
+      <div class="legal-grid">
+        <div class="legal-block">
+          <h4>Legal y Contacto</h4>
+          <p>Para consultas comerciales, alianzas o información corporativa, escríbenos a <a href="mailto:gerencia@nativacol.shop">gerencia@nativacol.shop</a>.</p>
+          <div class="social-links">
+            <a class="social-btn" href="https://www.instagram.com/nativa_bisuteria_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Nativa Bisutería">
+              <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.81s-.01 3.56-.07 4.81c-.15 3.22-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.63-.07-4.81s.02-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-2.27.1-3.33 1.18-3.43 3.43-.06 1.24-.07 1.6-.07 4.75s.01 3.52.07 4.76c.1 2.24 1.15 3.33 3.43 3.43 1.24.06 1.6.07 4.76.07s3.52-.01 4.76-.07c2.27-.1 3.33-1.18 3.43-3.43.06-1.24.07-1.6.07-4.76s-.01-3.51-.07-4.75c-.1-2.25-1.16-3.33-3.43-3.43-1.24-.06-1.6-.07-4.76-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.13-1.99a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+            </a>
+            <a class="social-btn" href="https://www.tiktok.com/@nativacol" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Nativa Bisutería">
+              <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.3c0 1.5-1.2 2.75-2.75 2.75a2.75 2.75 0 0 1-.4-5.47v-3.24a5.98 5.98 0 0 0-.6-.03A5.99 5.99 0 1 0 15.6 15.3V9.2a8.16 8.16 0 0 0 4.6 1.42V7.4a4.85 4.85 0 0 1-3.6-2.02A4.84 4.84 0 0 1 16.6 2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="legal-block">
+          <h4>Términos de Servicio</h4>
+          <p>Al comprar en Nativa Bisutería aceptas nuestras condiciones de venta. Puedes consultarlas completas a continuación.</p>
+          <button class="legal-terms-toggle" onclick="toggleTerms()">Ver términos completos</button>
+          <div class="legal-terms-body" id="legalTermsBody">
+            <p>Todas las piezas son elaboradas de forma artesanal, por lo que pueden presentar pequeñas variaciones naturales en color, tamaño o acabado que forman parte de su carácter único y no se consideran defectos. Los precios y la disponibilidad de stock están sujetos a cambio sin previo aviso. Los pedidos se confirman por correo electrónico o WhatsApp una vez recibida la solicitud desde esta tienda; el pago y el envío se coordinan directamente con nuestro equipo. Las imágenes, diseños y contenido de este sitio son propiedad de Nativa Bisutería y no pueden reproducirse sin autorización. Para cambios, devoluciones o reclamos, contáctanos dentro de los 5 días hábiles siguientes a la entrega a través de <a href="mailto:produccion@nativacol.shop">produccion@nativacol.shop</a>. Nativa Bisutería no se hace responsable por retrasos ocasionados por transportadoras externas. Estos términos se rigen por las leyes de la República de Colombia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="corporate-back-btn" onclick="switchView('store')">Ver la tienda</button>
+  </div>
+</section>
+
+<div class="store-view active" id="storeView">
+  <section class="hero" id="heroHome">
+    <div class="hero-slides" id="heroSlides" aria-hidden="true"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h2>Piezas Únicas, Hechas a Mano</h2>
+      <p>Cada pieza cuenta una historia. Bisutería artesanal inspirada en nuestras raíces, elaborada con materiales naturales y técnicas tradicionales.</p>
+    </div>
+    <div class="hero-dots" id="heroDots" aria-label="Imágenes del slideshow"></div>
+  </section>
+
+  <div class="filters" id="filters" style="display:none">
+    <button class="filter-btn active" data-cat="todos" onclick="filterProducts('todos')">Todos</button>
+  </div>
+
+  <div class="loading-bar" id="loading">
+    <div class="spinner"></div>
+    <p>Cargando catálogo...</p>
+  </div>
+
+  <div class="products" id="products" style="display:none"></div>
+</div>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Tu Carrito</h3>
+    <button class="close-cart" onclick="toggleCart()">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="empty-cart">Tu carrito está vacío</div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">Finalizar Compra</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <h3>Finalizar Compra</h3>
+    <p>Completa tus datos y te contactaremos para coordinar el pago y envío.</p>
+    <div class="form-group">
+      <label>Nombre completo</label>
+      <input type="text" id="customerName" placeholder="Tu nombre">
+    </div>
+    <div class="form-group">
+      <label>Correo electrónico</label>
+      <input type="email" id="customerEmail" placeholder="tu@email.com">
+    </div>
+    <div class="form-group">
+      <label>Teléfono / WhatsApp</label>
+      <input type="tel" id="customerPhone" placeholder="+57 300 000 0000">
+    </div>
+    <div class="form-group">
+      <label>Notas adicionales</label>
+      <textarea id="customerNotes" placeholder="Dirección, preguntas, etc."></textarea>
+    </div>
+    <div class="order-summary" id="orderSummary"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeCheckout()">Cancelar</button>
+      <button class="btn-primary" onclick="sendOrder()">Enviar Pedido</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-modal-overlay" id="productModal" onclick="if(event.target===this) closeProductModal()">
+  <div class="product-modal">
+    <button class="product-modal-close" onclick="closeProductModal()">&times;</button>
+    <div class="product-modal-body">
+      <div class="product-modal-gallery">
+        <div class="product-modal-main" id="productModalMain"></div>
+        <div class="product-modal-thumbs" id="productModalThumbs"></div>
+      </div>
+      <div class="product-modal-info" id="productModalInfo"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <p>Nativa Bisutería &mdash; Hecho a mano con amor</p>
+  <div class="social-links" style="justify-content:center;">
+    <a class="social-btn" href="https://www.instagram.com/nativa_bisuteria_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Nativa Bisutería">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.81s-.01 3.56-.07 4.81c-.15 3.22-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.63-.07-4.81s.02-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-2.27.1-3.33 1.18-3.43 3.43-.06 1.24-.07 1.6-.07 4.75s.01 3.52.07 4.76c.1 2.24 1.15 3.33 3.43 3.43 1.24.06 1.6.07 4.76.07s3.52-.01 4.76-.07c2.27-.1 3.33-1.18 3.43-3.43.06-1.24.07-1.6.07-4.76s-.01-3.51-.07-4.75c-.1-2.25-1.16-3.33-3.43-3.43-1.24-.06-1.6-.07-4.76-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.13-1.99a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+    </a>
+    <a class="social-btn" href="https://www.tiktok.com/@nativacol" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Nativa Bisutería">
+      <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.3c0 1.5-1.2 2.75-2.75 2.75a2.75 2.75 0 0 1-.4-5.47v-3.24a5.98 5.98 0 0 0-.6-.03A5.99 5.99 0 1 0 15.6 15.3V9.2a8.16 8.16 0 0 0 4.6 1.42V7.4a4.85 4.85 0 0 1-3.6-2.02A4.84 4.84 0 0 1 16.6 2z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+// Escanea products/001.json, 002.json... hasta que uno no exista.
+// Campos opcionales por producto: images (galería completa) y embeds (vistas 3D/iframe).
+// El slideshow de "Nosotros" hace lo mismo con homepage/001.jpg, 002.png, etc.
+
+const PRODUCTS_DIR = 'products';
+const HOMEPAGE_DIR = 'homepage';
+const HOMEPAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'];
+const SLIDE_INTERVAL_MS = 5500;
+let ALL_PRODUCTS = [];
+let CATEGORIES = new Set();
+let cart = JSON.parse(localStorage.getItem('nativa_cart') || '[]');
+let currentFilter = 'todos';
+let currentGallery = [];
+let currentGalleryIndex = 0;
+let currentDetailProduct = null;
+
+function pad(n) { return String(n).padStart(3, '0'); }
+function fmtPrice(p) { return '$' + p.toLocaleString('es-CO'); }
+
+async function scanProducts() {
+  const products = [];
+  let i = 1;
+
+  while (true) {
+    const id = pad(i);
+    try {
+      const res = await fetch(`${PRODUCTS_DIR}/${id}.json`);
+      if (!res.ok) break; // No más productos
+      const data = await res.json();
+      products.push(data);
+      if (data.category) CATEGORIES.add(data.category);
+      i++;
+    } catch (err) {
+      break; // Error de red o CORS = fin del catálogo
+    }
+  }
+
+  return products;
+}
+
+// Slideshow de la portada principal
+async function findHomepageImage(id) {
+  for (const ext of HOMEPAGE_EXTENSIONS) {
+    const path = `${HOMEPAGE_DIR}/${id}.${ext}`;
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+      const res = await fetch(path, { method: 'HEAD', signal: controller.signal });
+      clearTimeout(timeoutId);
+      if (res.ok) return path;
+    } catch (err) {
+      // Tiempo agotado, 404, o servidor sin soporte HEAD: sigue con la siguiente extensión
+    }
+  }
+  return null;
+}
+
+async function scanHomepageImages() {
+  const images = [];
+  let i = 1;
+  while (true) {
+    const id = pad(i);
+    const found = await findHomepageImage(id);
+    if (!found) break;
+    images.push(found);
+    i++;
+  }
+  return images;
+}
+
+let corporateSlideTimer = null;
+
+function renderHeroSlides(images) {
+  const hero = document.getElementById('heroHome');
+  const slidesEl = document.getElementById('heroSlides');
+  const dotsEl = document.getElementById('heroDots');
+
+  if (!hero || !slidesEl || !dotsEl) return;
+
+  if (!images.length) {
+    hero.classList.add('no-slides');
+    dotsEl.innerHTML = '';
+    return;
+  }
+
+  hero.classList.remove('no-slides');
+  slidesEl.innerHTML = images.map((src, i) =>
+    `<div class="hero-slide${i === 0 ? ' active' : ''}" style="background-image:url('${src}')"></div>`
+  ).join('');
+
+  dotsEl.innerHTML = images.map((_, i) =>
+    `<span class="${i === 0 ? 'active' : ''}"></span>`
+  ).join('');
+
+  if (images.length > 1) {
+    let idx = 0;
+    if (corporateSlideTimer) clearInterval(corporateSlideTimer);
+    corporateSlideTimer = setInterval(() => {
+      const slides = slidesEl.querySelectorAll('.hero-slide');
+      const dots = dotsEl.querySelectorAll('span');
+      if (!slides.length) return;
+      slides[idx].classList.remove('active');
+      dots[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('active');
+    }, SLIDE_INTERVAL_MS);
+  }
+}
+
+function buildFilters() {
+  const container = document.getElementById('filters');
+  const cats = Array.from(CATEGORIES).sort();
+  let html = `<button class="filter-btn active" data-cat="todos" onclick="filterProducts('todos')">Todos</button>`;
+  for (const cat of cats) {
+    html += `<button class="filter-btn" data-cat="${cat}" onclick="filterProducts('${cat}')">${cat}</button>`;
+  }
+  container.innerHTML = html;
+  container.style.display = 'flex';
+}
+
+function renderProducts() {
+  const container = document.getElementById('products');
+  const filtered = currentFilter === 'todos' 
+    ? ALL_PRODUCTS 
+    : ALL_PRODUCTS.filter(p => p.category === currentFilter);
+
+  container.innerHTML = filtered.map(p => `
+    <div class="product-card" onclick="showProductDetail('${p.id}')">
+      <div class="product-img">
+        <img src="${PRODUCTS_DIR}/${p.image || p.id + '.jpg'}" alt="${p.title}" loading="lazy"
+             onerror="this.outerHTML='<div class=&quot;image-fallback&quot;>Imagen no disponible</div>';">
+        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <h3>${p.title}</h3>
+        <div class="product-meta">
+          ${p.material ? `<span>${p.material}</span>` : ''}
+          ${p.dimensions ? `<span>${p.dimensions}</span>` : ''}
+        </div>
+        <p>${p.description}</p>
+        <div class="product-footer">
+          <div>
+            <span class="price">${fmtPrice(p.price)}</span>
+            ${p.stock !== undefined ? `<div class="stock-tag">${p.stock} disponibles</div>` : ''}
+          </div>
+          <button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.id}')" ${p.stock === 0 ? 'disabled' : ''}>
+            ${p.stock === 0 ? 'Agotado' : 'Añadir'}
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  container.style.display = 'grid';
+}
+
+function filterProducts(cat) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === cat);
+  });
+  renderProducts();
+}
+
+function addToCart(id) {
+  const product = ALL_PRODUCTS.find(p => p.id === id);
+  if (!product) return;
+  if (product.stock === 0) { showToast('Producto agotado'); return; }
+
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    if (product.stock !== undefined && item.qty >= product.stock) {
+      showToast('Máximo stock alcanzado'); return;
+    }
+    item.qty++;
+  } else {
+    cart.push({ id, qty: 1, price: product.price, title: product.title });
+  }
+  saveCart();
+  updateCartUI();
+  showToast('Producto añadido al carrito');
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+  updateCartUI();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  const product = ALL_PRODUCTS.find(p => p.id === id);
+
+  if (delta > 0 && product && product.stock !== undefined && item.qty >= product.stock) {
+    showToast('Máximo stock alcanzado'); return;
+  }
+
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else { saveCart(); updateCartUI(); }
+}
+
+function saveCart() {
+  localStorage.setItem('nativa_cart', JSON.stringify(cart));
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const countEl = document.getElementById('cartCount');
+  countEl.textContent = count;
+  countEl.style.display = count > 0 ? 'flex' : 'none';
+
+  const itemsEl = document.getElementById('cartItems');
+  const footerEl = document.getElementById('cartFooter');
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<div class="empty-cart">Tu carrito está vacío</div>';
+    footerEl.style.display = 'none';
+    return;
+  }
+
+  footerEl.style.display = 'block';
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('cartTotal').textContent = fmtPrice(total);
+
+  itemsEl.innerHTML = cart.map(item => {
+    const product = ALL_PRODUCTS.find(p => p.id === item.id);
+    return `
+      <div class="cart-item">
+        <div class="cart-item-img">
+          <img src="${PRODUCTS_DIR}/${product?.image || item.id + '.jpg'}" alt="${item.title}" onerror="this.outerHTML='<div class=&quot;image-fallback&quot;>—</div>'">
+        </div>
+        <div class="cart-item-info">
+          <h4>${item.title}</h4>
+          <div class="item-price">${fmtPrice(item.price)} c/u</div>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+          <button class="remove-item" onclick="removeFromCart('${item.id}')">Eliminar</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function switchView(view) {
+  const storeEl = document.getElementById('storeView');
+  const corporateEl = document.getElementById('corporateView');
+
+  storeEl.classList.toggle('active', view === 'store');
+  corporateEl.classList.toggle('active', view === 'corporate');
+
+  document.querySelectorAll('.nav-link').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === view);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleOrgItem(headerBtn) {
+  const item = headerBtn.closest('.org-item');
+  const body = item.querySelector('.org-item-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    item.classList.remove('open');
+    body.style.maxHeight = '0px';
+  } else {
+    item.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+
+function toggleTerms() {
+  const body = document.getElementById('legalTermsBody');
+  const isOpen = body.classList.contains('open');
+
+  if (isOpen) {
+    body.classList.remove('open');
+    body.style.maxHeight = '0px';
+  } else {
+    body.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+
+function toggleCart() {
+  document.getElementById('cartOverlay').classList.toggle('open');
+  document.getElementById('cartDrawer').classList.toggle('open');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+function openCheckout() {
+  toggleCart();
+  const summary = document.getElementById('orderSummary');
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  summary.innerHTML = `
+    <h4>Resumen del pedido</h4>
+    ${cart.map(i => `
+      <div class="summary-item">
+        <span>${i.qty}x ${i.title}</span>
+        <span>${fmtPrice(i.price * i.qty)}</span>
+      </div>
+    `).join('')}
+    <div class="summary-total">
+      <span>Total</span>
+      <span>${fmtPrice(total)}</span>
+    </div>
+  `;
+  document.getElementById('checkoutModal').classList.add('open');
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('open');
+}
+
+function sendOrder() {
+  const name = document.getElementById('customerName').value.trim();
+  const email = document.getElementById('customerEmail').value.trim();
+  const phone = document.getElementById('customerPhone').value.trim();
+  const notes = document.getElementById('customerNotes').value.trim();
+
+  if (!name || !email || !phone) {
+    showToast('Por favor completa todos los campos');
+    return;
+  }
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const items = cart.map(i => `${i.qty}x ${i.title} (${fmtPrice(i.price)} c/u)`).join(', ');
+
+  const subject = `Nuevo pedido Nativa Bisutería - ${name}`;
+  const body = `Hola, tengo un nuevo pedido desde la tienda Nativa Bisutería.
+
+CLIENTE:
+Nombre: ${name}
+Email: ${email}
+Teléfono: ${phone}
+
+PRODUCTOS:
+${items}
+
+TOTAL: ${fmtPrice(total)}
+
+NOTAS ADICIONALES:
+${notes || 'Ninguna'}
+
+---
+Enviado desde nativa-bisuteria.store`;
+
+  window.location.href = `mailto:produccion@nativacol.shop?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  closeCheckout();
+  cart = [];
+  saveCart();
+  updateCartUI();
+  showToast('¡Gracias! Se abrirá tu cliente de correo');
+}
+
+function getGalleryItems(p) {
+  const items = [];
+  const imgs = (p.images && p.images.length) ? p.images : [p.image || (p.id + '.jpg')];
+  imgs.forEach(img => items.push({ type: 'image', src: `${PRODUCTS_DIR}/${img}` }));
+
+  if (p.embeds && p.embeds.length) {
+    p.embeds.forEach(e => {
+      if (typeof e === 'string') {
+        items.push({ type: 'embed', src: e, title: p.title });
+      } else if (e && e.url) {
+        items.push({ type: 'embed', src: e.url, title: e.title || p.title });
+      }
+    });
+  }
+  return items;
+}
+
+function renderGalleryItem(item) {
+  if (item.type === 'embed') {
+    return `<iframe src="${item.src}" title="${item.title || ''}"
+      allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; gyroscope"
+      allowfullscreen loading="lazy"></iframe>`;
+  }
+  return `<img src="${item.src}" alt=""
+    onerror="this.outerHTML='<div class=&quot;image-fallback&quot;>Imagen no disponible</div>';">`;
+}
+
+function selectGalleryItem(idx) {
+  currentGalleryIndex = idx;
+  document.getElementById('productModalMain').innerHTML = renderGalleryItem(currentGallery[idx]);
+  document.querySelectorAll('#productModalThumbs .gallery-thumb').forEach((btn, i) => {
+    btn.classList.toggle('active', i === idx);
+  });
+}
+
+function renderProductModal() {
+  const p = currentDetailProduct;
+
+  document.getElementById('productModalMain').innerHTML = renderGalleryItem(currentGallery[currentGalleryIndex]);
+
+  document.getElementById('productModalThumbs').innerHTML = currentGallery.map((item, idx) => `
+    <button class="gallery-thumb${idx === currentGalleryIndex ? ' active' : ''}" onclick="selectGalleryItem(${idx})">
+      ${item.type === 'embed'
+        ? `<span class="thumb-3d-badge">3D</span>`
+        : `<img src="${item.src}" alt="" onerror="this.style.display='none';">`}
+    </button>
+  `).join('');
+
+  document.getElementById('productModalInfo').innerHTML = `
+    ${p.badge ? `<span class="product-badge" style="position:static; display:inline-block; margin-bottom:14px;">${p.badge}</span>` : ''}
+    <h3>${p.title}</h3>
+    <div class="product-meta">
+      ${p.material ? `<span>${p.material}</span>` : ''}
+      ${p.dimensions ? `<span>${p.dimensions}</span>` : ''}
+    </div>
+    <p>${p.description}</p>
+    <div class="product-modal-footer">
+      <div>
+        <span class="price">${fmtPrice(p.price)}</span>
+        ${p.stock !== undefined ? `<div class="stock-tag">${p.stock} disponibles</div>` : ''}
+      </div>
+      <button class="add-btn" onclick="addToCart('${p.id}')" ${p.stock === 0 ? 'disabled' : ''}>
+        ${p.stock === 0 ? 'Agotado' : 'Añadir al carrito'}
+      </button>
+    </div>
+  `;
+}
+
+function showProductDetail(id) {
+  const product = ALL_PRODUCTS.find(p => p.id === id);
+  if (!product) return;
+
+  currentDetailProduct = product;
+  currentGallery = getGalleryItems(product);
+  currentGalleryIndex = 0;
+
+  renderProductModal();
+  document.getElementById('productModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('productModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function init() {
+  // El slideshow de homepage/ va aparte para que, si falla o tarda, no bloquee la tienda
+  scanHomepageImages()
+    .then(renderHeroSlides)
+    .catch(err => console.warn('No se pudo cargar el slideshow de homepage/:', err));
+
+  let products = [];
+  try {
+    products = await scanProducts();
+  } catch (err) {
+    console.error('Error al escanear products/:', err);
+  }
+
+  ALL_PRODUCTS = products;
+
+  document.getElementById('loading').style.display = 'none';
+
+  if (ALL_PRODUCTS.length === 0) {
+    document.getElementById('products').style.display = 'block';
+    document.getElementById('products').innerHTML = `
+      <div style="text-align:center; padding:80px 24px; color:var(--gris); grid-column:1/-1;">
+        <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; color:var(--vino);">Catálogo en preparación</p>
+        <p style="margin-top:10px; font-size:10px; letter-spacing:.6px;">No se encontraron productos en la carpeta <code>products/</code>. Revisa la consola del navegador (F12) si esperabas ver productos aquí.</p>
+      </div>
+    `;
+    return;
+  }
+
+  buildFilters();
+  renderProducts();
+  updateCartUI();
+}
+
+init();
+</script>
+
+</body>
+</html>
