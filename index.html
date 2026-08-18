@@ -98,6 +98,33 @@
     object-fit: contain;
   }
 
+  /* --- Simbolo Nativa (Quienes Somos): dorado metalico (mismo --dorado de los titulos) reactivo al mouse --- */
+  .nativa-symbol-wrap {
+    position: relative;
+    display: block;
+    width: min(100%, 320px);
+    margin: 20px auto 30px;
+  }
+
+  /* Recolorea el SVG usando su canal alfa (no luminancia) al mismo dorado de los titulos,
+     y agrega un reflejo metalico sutil (doble drop-shadow calido/frio) que se desplaza con el cursor. */
+  .nativa-symbol-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    --sx: 0px;
+    --sy: 0px;
+    filter:
+      url(#nativaDoradoFilter)
+      drop-shadow(var(--sx) var(--sy) 2px rgba(72, 19, 31, 0.5))
+      drop-shadow(calc(var(--sx) * -1) calc(var(--sy) * -1) 2px rgba(255, 250, 235, 0.75));
+    transition: filter 0.1s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nativa-symbol-logo { transition: none; }
+  }
+
   .cart-btn {
     position: relative;
     display: inline-flex;
@@ -1451,7 +1478,7 @@
       padding: 13px 18px;
     }
 
-    .logo-svg { width: 90px; height: 100px; objectfit: fill; }
+    .logo-svg { width: 90px; height: 100px; object-fit: fill; }
 
     .cart-btn {
       min-width: 98px;
@@ -1570,16 +1597,39 @@
   <div class="corporate-content">
     <span class="corporate-eyebrow">Nativa Bisutería</span>
     <h2 class="corporate-title">Quiénes Somos</h2>
+
+    <!-- Nueva sección: ¿Qué es Nativa? -->
+    <div class="corporate-grid" style="margin-bottom:48px">
+      <div class="corporate-block" style="grid-column:1/-1">
+        <h3>Qué es Nativa</h3>
+        <p>Nace de nuestras raíces y de la esencia de lo hecho a mano. Nuestro nombre representa aquello que es auténtico, propio y nacido de un origen, una identidad que no busca imitar, sino transformar lo que tenemos en algo único.</p>
+        <p>Creemos que el verdadero valor de una pieza está en todo aquello que no se ve a simple vista: las manos que la crean, el tiempo que se dedica a cada detalle y la historia que existe detrás de ella. Por eso, en NATIVA, cada pieza lleva consigo el carácter de lo artesanal y la dedicación de quienes la hacen posible.</p>
+      </div>
+    </div>
+
     <div class="corporate-grid">
       <div class="corporate-block">
-        <h3>Visión</h3>
-        <p>Ser la marca de bisutería artesanal más reconocida por preservar y reinventar las raíces de nuestra cultura, llevando piezas únicas hechas a mano a hogares y personas que valoran lo genuino, lo natural y lo hecho con propósito.</p>
+        <h3>Símbolo: Flor de lis</h3>
+        <div class="nativa-symbol-wrap" id="nativaSymbolWrap">
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+            <filter id="nativaDoradoFilter" color-interpolation-filters="sRGB">
+              <feFlood flood-color="#d4a34f" flood-opacity="1" result="doradoFlood"/>
+              <feComposite in="doradoFlood" in2="SourceGraphic" operator="in"/>
+            </filter>
+          </svg>
+          <img class="nativa-symbol-logo" src="nativa.svg" alt="Símbolo de flor de lis de Nativa">
+        </div>
+        <p>La flor de lis es el símbolo que representa nuestra identidad. Sus formas nos recuerdan que la elegancia no está únicamente en el resultado final, sino también en la manera de crear. Representa la unión entre la tradición y la sofisticación: el trabajo artesanal de nuestras manos convertido en piezas que transmiten distinción.</p>
+        <p>Cada línea de nuestra flor de lis representa un detalle pensado, trabajado y cuidado. Es el encuentro entre nuestras raíces artesanales y nuestra visión de una belleza elegante y atemporal.</p>
       </div>
       <div class="corporate-block">
         <h3>Misión</h3>
-        <p>Diseñar y elaborar bisutería artesanal con materiales naturales y técnicas tradicionales, apoyando el trabajo manual local y ofreciendo a cada cliente una pieza con historia, identidad y calidad excepcional.</p>
+        <p>Diseñar y elaborar bisutería artesanal con materiales naturales y técnicas tradicionales, apoyando el trabajo manual local y ofreciendo a cada cliente una pieza auténtica, con historia, identidad y calidad excepcional.</p>
+        <h3 style="margin-top:22px">Visión</h3>
+        <p>Ser la marca de bisutería artesanal más reconocida por preservar y reinventar nuestras raíces, llevando piezas únicas hechas a mano a personas que valoran lo genuino, lo natural, lo hecho con propósito y una belleza elegante y atemporal.</p>
       </div>
     </div>
+
 
     <div class="org-chart">
       <h3 class="org-chart-title">Nuestro Organigrama</h3>
@@ -2257,5 +2307,40 @@ async function init() {
 init();
 </script>
 
+<script>
+(function () {
+  var wrap = document.getElementById('nativaSymbolWrap');
+  if (!wrap) return;
+  var logo = wrap.querySelector('.nativa-symbol-logo');
+  if (!logo) return;
+
+  function updateFromEvent(clientX, clientY) {
+    var rect = wrap.getBoundingClientRect();
+    var x = ((clientX - rect.left) / rect.width) * 100;
+    var y = ((clientY - rect.top) / rect.height) * 100;
+    var cx = Math.max(0, Math.min(100, x));
+    var cy = Math.max(0, Math.min(100, y));
+
+    // Ligero desplazamiento de las sombras de contacto (borde cálido/frío) según el cursor:
+    // simula un reflejo metálico sutil, contenido en la silueta del logo (no expansivo).
+    var dx = (cx - 50) / 50; // -1 a 1
+    var dy = (cy - 50) / 50;
+    logo.style.setProperty('--sx', (-dx * 2.2).toFixed(1) + 'px');
+    logo.style.setProperty('--sy', (-dy * 2.2).toFixed(1) + 'px');
+  }
+
+  // El reflejo metálico reacciona al mover el mouse por toda la página
+  window.addEventListener('mousemove', function (e) {
+    updateFromEvent(e.clientX, e.clientY);
+  }, { passive: true });
+
+  // Soporte táctil
+  wrap.addEventListener('touchmove', function (e) {
+    if (e.touches && e.touches[0]) {
+      updateFromEvent(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>
