@@ -98,31 +98,56 @@
     object-fit: contain;
   }
 
-  /* --- Simbolo Nativa (Quienes Somos): dorado metalico (mismo --dorado de los titulos) reactivo al mouse --- */
+  /* --- Simbolo Nativa (Quienes Somos): oro metalico con brillo y sombras que se mueven con el cursor --- */
   .nativa-symbol-wrap {
     position: relative;
     display: block;
     width: min(100%, 320px);
+    aspect-ratio: 2388 / 1668; /* misma proporcion que nativa.svg */
     margin: 20px auto 30px;
+    --sx: 0px;         /* desplazamiento X de las sombras (cursor) */
+    --sy: 0px;         /* desplazamiento Y de las sombras (cursor) */
+    --shine-shift: 0%; /* posicion de la linea de brillo metalico (cursor) */
+    filter:
+      drop-shadow(calc(var(--sx)) calc(16px + var(--sy)) 24px rgba(72, 19, 31, .42))   /* sombra abajo */
+      drop-shadow(calc(var(--sx) * -0.5) calc(-10px + var(--sy) * -0.5) 16px rgba(212, 163, 79, .4)); /* sombra arriba (dorado) */
+    transition: filter .12s ease-out;
   }
 
-  /* Recolorea el SVG usando su canal alfa (no luminancia) al mismo dorado de los titulos,
-     y agrega un reflejo metalico sutil (doble drop-shadow calido/frio) que se desplaza con el cursor. */
-  .nativa-symbol-logo {
-    display: block;
-    width: 100%;
-    height: auto;
-    --sx: 0px;
-    --sy: 0px;
-    filter:
-      url(#nativaDoradoFilter)
-      drop-shadow(var(--sx) var(--sy) 2px rgba(72, 19, 31, 0.5))
-      drop-shadow(calc(var(--sx) * -1) calc(var(--sy) * -1) 2px rgba(255, 250, 235, 0.75));
-    transition: filter 0.1s ease-out;
+  /* Capas recortadas por la silueta de la flor de lis (canal alfa del SVG) */
+  .nativa-metal {
+    position: absolute;
+    inset: 0;
+    -webkit-mask: url('nativa.svg') center / contain no-repeat;
+            mask: url('nativa.svg') center / contain no-repeat;
+  }
+
+  /* Base de oro cepillado: bandas de tono claro/oscuro */
+  .nativa-metal-base {
+    background: linear-gradient(158deg,
+      #f9ecbb 0%, #ecc96f 22%, #d4a34f 42%,
+      #9c6b1c 60%, #c8963f 78%, #f3d98f 95%);
+  }
+
+  /* Luz que entra desde arriba (profundidad metalica) */
+  .nativa-metal-top {
+    background: linear-gradient(180deg, rgba(255, 250, 232, .5), rgba(255, 250, 232, 0) 46%);
+  }
+
+  /* Linea de brillo especular: se desplaza con el cursor */
+  .nativa-metal-shine { overflow: hidden; }
+  .shine-band {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg,
+      transparent 34%, rgba(255, 250, 235, .95) 50%, transparent 66%);
+    transform: translateX(var(--shine-shift));
+    transition: transform .12s ease-out;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .nativa-symbol-logo { transition: none; }
+    .nativa-symbol-wrap { transition: none; }
+    .shine-band { transition: none; }
   }
 
   .cart-btn {
@@ -749,6 +774,21 @@
     height: 1px;
     background: var(--dorado);
   }
+
+  .filters-row { display: flex; flex-direction: column; align-items: center; }
+
+  .filters-row-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+    padding-top: 26px;
+  }
+
+  .filters-row:first-child .filters-row-label { padding-top: 34px; }
+
+  .filters--sub { padding-top: 14px; }
 
   /* ---------- LOADING ---------- */
 
@@ -1586,6 +1626,7 @@
   <nav class="header-nav">
     <button class="nav-link active" data-view="store" onclick="switchView('store')">Tienda</button>
     <button class="nav-link" data-view="corporate" onclick="switchView('corporate')">Nosotros</button>
+    <a class="nav-link" href="presentacion.html">Presentación</a>
   </nav>
   <button class="cart-btn" onclick="toggleCart()">
     Carrito
@@ -1610,23 +1651,19 @@
     <div class="corporate-grid">
       <div class="corporate-block">
         <h3>Símbolo: Flor de lis</h3>
-        <div class="nativa-symbol-wrap" id="nativaSymbolWrap">
-          <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-            <filter id="nativaDoradoFilter" color-interpolation-filters="sRGB">
-              <feFlood flood-color="#d4a34f" flood-opacity="1" result="doradoFlood"/>
-              <feComposite in="doradoFlood" in2="SourceGraphic" operator="in"/>
-            </filter>
-          </svg>
-          <img class="nativa-symbol-logo" src="nativa.svg" alt="Símbolo de flor de lis de Nativa">
+        <div class="nativa-symbol-wrap" id="nativaSymbolWrap" role="img" aria-label="Símbolo de flor de lis de Nativa en oro metálico">
+          <div class="nativa-metal nativa-metal-base"></div>
+          <div class="nativa-metal nativa-metal-top"></div>
+          <div class="nativa-metal nativa-metal-shine"><span class="shine-band"></span></div>
         </div>
         <p>La flor de lis es el símbolo que representa nuestra identidad. Sus formas nos recuerdan que la elegancia no está únicamente en el resultado final, sino también en la manera de crear. Representa la unión entre la tradición y la sofisticación: el trabajo artesanal de nuestras manos convertido en piezas que transmiten distinción.</p>
         <p>Cada línea de nuestra flor de lis representa un detalle pensado, trabajado y cuidado. Es el encuentro entre nuestras raíces artesanales y nuestra visión de una belleza elegante y atemporal.</p>
       </div>
       <div class="corporate-block">
         <h3>Misión</h3>
-        <p>Diseñar y elaborar bisutería artesanal con materiales naturales y técnicas tradicionales, apoyando el trabajo manual local y ofreciendo a cada cliente una pieza auténtica, con historia, identidad y calidad excepcional.</p>
+        <p>Creamos accesorios exclusivos que fusionan diseño, calidad y artesanía, elaborados 100% a mano con dedicación y atención al detalle. Ofrecemos a hombres y mujeres piezas atemporales que reflejan su identidad y estilo, revalorizando el oficio artesanal y transformándolo en una propuesta de lujo contemporáneo.</p>
         <h3 style="margin-top:22px">Visión</h3>
-        <p>Ser la marca de bisutería artesanal más reconocida por preservar y reinventar nuestras raíces, llevando piezas únicas hechas a mano a personas que valoran lo genuino, lo natural, lo hecho con propósito y una belleza elegante y atemporal.</p>
+        <p>Para el semestre 2026-2, consolidarnos como una marca referente de bisutería artesanal en la región caribe, con proyección y reconocimiento en los mercados nacional e internacional, destacándonos por nuestro compromiso con el comercio justo, la dignificación del trabajo artesanal y el uso responsable de materiales y procesos ambientalmente sostenibles.</p>
       </div>
     </div>
 
@@ -1731,8 +1768,14 @@
     <div class="hero-dots" id="heroDots" aria-label="Imágenes del slideshow"></div>
   </section>
 
-  <div class="filters" id="filters" style="display:none">
-    <button class="filter-btn active" data-cat="todos" onclick="filterProducts('todos')">Todos</button>
+  <div class="filters-row" id="collectionFiltersRow" style="display:none">
+    <span class="filters-row-label">Colección</span>
+    <div class="filters" id="collectionFilters"></div>
+  </div>
+
+  <div class="filters-row" id="categoryFiltersRow" style="display:none">
+    <span class="filters-row-label">Categoría</span>
+    <div class="filters filters--sub" id="filters"></div>
   </div>
 
   <div class="loading-bar" id="loading">
@@ -1825,9 +1868,13 @@ const PRODUCTS_DIR = 'products';
 const HOMEPAGE_DIR = 'homepage';
 const HOMEPAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp'];
 const SLIDE_INTERVAL_MS = 5500;
+// Las 3 mini colecciones de lanzamiento, en el orden en que deben mostrarse.
+// Si aparece una colección nueva en un JSON que no está en esta lista, se añade
+// automáticamente al final (ver buildCollectionFilters).
+const COLLECTIONS_ORDER = ['Cayena', 'Nativa', 'Évora'];
 let ALL_PRODUCTS = [];
-let CATEGORIES = new Set();
 let cart = JSON.parse(localStorage.getItem('nativa_cart') || '[]');
+let currentCollection = 'todas';
 let currentFilter = 'todos';
 let currentGallery = [];
 let currentGalleryIndex = 0;
@@ -1847,7 +1894,6 @@ async function scanProducts() {
       if (!res.ok) break; // No más productos
       const data = await res.json();
       products.push(data);
-      if (data.category) CATEGORIES.add(data.category);
       i++;
     } catch (err) {
       break; // Error de red o CORS = fin del catálogo
@@ -1927,22 +1973,94 @@ function renderHeroSlides(images) {
   }
 }
 
-function buildFilters() {
+// Orden de clasificación: primero por colección (según COLLECTIONS_ORDER),
+// luego por el resto (categoría y, por último, id) dentro de cada colección.
+function collectionSortIndex(collection) {
+  const idx = COLLECTIONS_ORDER.indexOf(collection);
+  return idx === -1 ? COLLECTIONS_ORDER.length : idx;
+}
+
+function sortProducts(products) {
+  return products.slice().sort((a, b) => {
+    const ca = collectionSortIndex(a.collection);
+    const cb = collectionSortIndex(b.collection);
+    if (ca !== cb) return ca - cb;
+    const catA = a.category || '';
+    const catB = b.category || '';
+    if (catA !== catB) return catA.localeCompare(catB, 'es');
+    return String(a.id).localeCompare(String(b.id), 'es');
+  });
+}
+
+function productsInCollection(collection) {
+  return collection === 'todas'
+    ? ALL_PRODUCTS
+    : ALL_PRODUCTS.filter(p => p.collection === collection);
+}
+
+function buildCollectionFilters() {
+  const container = document.getElementById('collectionFilters');
+  const row = document.getElementById('collectionFiltersRow');
+
+  // Colecciones presentes en el catálogo: primero las 3 de lanzamiento (en su
+  // orden fijo), y al final cualquier otra que aparezca en los JSON.
+  const found = Array.from(new Set(ALL_PRODUCTS.map(p => p.collection).filter(Boolean)));
+  const known = COLLECTIONS_ORDER.filter(c => found.includes(c));
+  const extra = found.filter(c => !COLLECTIONS_ORDER.includes(c)).sort();
+  const collections = [...known, ...extra];
+
+  if (collections.length < 2) {
+    // Con 0 o 1 colección no tiene sentido mostrar el selector.
+    row.style.display = 'none';
+    return;
+  }
+
+  let html = `<button class="filter-btn active" data-col="todas" onclick="filterByCollection('todas')">Todas</button>`;
+  for (const col of collections) {
+    html += `<button class="filter-btn" data-col="${col}" onclick="filterByCollection('${col}')">${col}</button>`;
+  }
+  container.innerHTML = html;
+  row.style.display = 'flex';
+}
+
+function buildCategoryFilters() {
   const container = document.getElementById('filters');
-  const cats = Array.from(CATEGORIES).sort();
+  const row = document.getElementById('categoryFiltersRow');
+
+  // Las categorías se calculan sobre los productos de la colección ya
+  // seleccionada, no sobre todo el catálogo.
+  const cats = Array.from(new Set(productsInCollection(currentCollection).map(p => p.category).filter(Boolean))).sort();
+
+  if (!cats.length) {
+    row.style.display = 'none';
+    return;
+  }
+
   let html = `<button class="filter-btn active" data-cat="todos" onclick="filterProducts('todos')">Todos</button>`;
   for (const cat of cats) {
     html += `<button class="filter-btn" data-cat="${cat}" onclick="filterProducts('${cat}')">${cat}</button>`;
   }
   container.innerHTML = html;
-  container.style.display = 'flex';
+  row.style.display = 'flex';
+}
+
+function filterByCollection(col) {
+  currentCollection = col;
+  currentFilter = 'todos'; // al cambiar de colección se reinicia el filtro de categoría
+  document.querySelectorAll('#collectionFilters .filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.col === col);
+  });
+  buildCategoryFilters();
+  renderProducts();
 }
 
 function renderProducts() {
   const container = document.getElementById('products');
-  const filtered = currentFilter === 'todos' 
-    ? ALL_PRODUCTS 
-    : ALL_PRODUCTS.filter(p => p.category === currentFilter);
+  let filtered = productsInCollection(currentCollection);
+  if (currentFilter !== 'todos') {
+    filtered = filtered.filter(p => p.category === currentFilter);
+  }
+  filtered = sortProducts(filtered);
 
   container.innerHTML = filtered.map(p => `
     <div class="product-card" onclick="showProductDetail('${p.id}')">
@@ -1976,7 +2094,7 @@ function renderProducts() {
 
 function filterProducts(cat) {
   currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  document.querySelectorAll('#filters .filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cat === cat);
   });
   renderProducts();
@@ -2293,13 +2411,14 @@ async function init() {
     document.getElementById('products').innerHTML = `
       <div style="text-align:center; padding:80px 24px; color:var(--gris); grid-column:1/-1;">
         <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; color:var(--vino);">Catálogo en preparación</p>
-        <p style="margin-top:10px; font-size:10px; letter-spacing:.6px;">No se encontraron productos en la carpeta <code>products/</code>. Revisa la consola del navegador (F12) si esperabas ver productos aquí.</p>
+        <p style="margin-top:10px; font-size:10px; letter-spacing:.6px;">Vuelve pronto para descubrir las piezas disponibles.</p>
       </div>
     `;
     return;
   }
 
-  buildFilters();
+  buildCollectionFilters();
+  buildCategoryFilters();
   renderProducts();
   updateCartUI();
 }
@@ -2311,25 +2430,22 @@ init();
 (function () {
   var wrap = document.getElementById('nativaSymbolWrap');
   if (!wrap) return;
-  var logo = wrap.querySelector('.nativa-symbol-logo');
-  if (!logo) return;
 
   function updateFromEvent(clientX, clientY) {
     var rect = wrap.getBoundingClientRect();
-    var x = ((clientX - rect.left) / rect.width) * 100;
-    var y = ((clientY - rect.top) / rect.height) * 100;
-    var cx = Math.max(0, Math.min(100, x));
-    var cy = Math.max(0, Math.min(100, y));
+    var cx = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    var cy = Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100));
 
-    // Ligero desplazamiento de las sombras de contacto (borde cálido/frío) según el cursor:
-    // simula un reflejo metálico sutil, contenido en la silueta del logo (no expansivo).
+    // La luz "viene" del cursor: la linea de brillo se desplaza hacia el mouse
+    // y las sombras (abajo y arriba) en sentido contrario.
     var dx = (cx - 50) / 50; // -1 a 1
     var dy = (cy - 50) / 50;
-    logo.style.setProperty('--sx', (-dx * 2.2).toFixed(1) + 'px');
-    logo.style.setProperty('--sy', (-dy * 2.2).toFixed(1) + 'px');
+    wrap.style.setProperty('--sx', (-dx * 7).toFixed(1) + 'px');
+    wrap.style.setProperty('--sy', (-dy * 5).toFixed(1) + 'px');
+    wrap.style.setProperty('--shine-shift', (dx * 60).toFixed(1) + '%');
   }
 
-  // El reflejo metálico reacciona al mover el mouse por toda la página
+  // El brillo metalico reacciona al mover el mouse por toda la pagina
   window.addEventListener('mousemove', function (e) {
     updateFromEvent(e.clientX, e.clientY);
   }, { passive: true });

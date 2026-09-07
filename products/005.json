@@ -1,0 +1,23 @@
+{
+  "id": "005",
+  "title": "Arete Cayena Dorada",
+  "price": 10418,
+  "description": "Arete artesanal de inspiración floral, tejido a mano, con detalles dorados que resaltan el centro de la pieza.",
+  "category": "Aretes",
+  "image": "005.png",
+  "images": [
+    "005.png"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales textiles/metálicos",
+  "dimensions": "Estándar",
+  "stock": 15,
+  "tags": [
+    "Cayena",
+    "aretes",
+    "floral",
+    "dorado"
+  ],
+  "collection": "Cayena"
+}

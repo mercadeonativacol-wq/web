@@ -1,0 +1,23 @@
+{
+  "id": "002",
+  "title": "Arete Cayena del Sol",
+  "price": 18206,
+  "description": "Arete artesanal realizado con técnica crochet con la emblemática flor cayena. Con toques decorativos realizados con canutillo dorado.",
+  "category": "Aretes",
+  "image": "002.png",
+  "images": [
+    "002.png"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales textiles/metálicos",
+  "dimensions": "Estándar",
+  "stock": 15,
+  "tags": [
+    "Cayena",
+    "aretes",
+    "crochet",
+    "flor cayena"
+  ],
+  "collection": "Cayena"
+}

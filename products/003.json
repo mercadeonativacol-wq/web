@@ -1,0 +1,22 @@
+{
+  "id": "003",
+  "title": "Arete Aurora Nivea",
+  "price": 20000,
+  "description": "Arete pequeño realizado con la técnica de tejido con mostacillas. Porta la elegancia de las artesanías con esta lujosa combinación de colores y sobriedad para el día a día.",
+  "category": "Aretes",
+  "image": "003.png",
+  "images": [
+    "003.png"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales textiles/metálicos",
+  "dimensions": "Estándar",
+  "stock": 15,
+  "tags": [
+    "Nativa",
+    "aretes",
+    "mostacillas"
+  ],
+  "collection": "Nativa"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "008",
+  "title": "Manilla Camelia",
+  "price": 25000,
+  "description": "Pulsera realizada con la técnica de tejido con mostacillas. Porta la elegancia del arte en tus muñecas con esta lujosa combinación de colores.",
+  "category": "Pulseras",
+  "image": "008.png",
+  "images": [
+    "008.png"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales textiles/metálicos",
+  "dimensions": "Estándar",
+  "stock": 15,
+  "tags": [
+    "Nativa",
+    "pulsera",
+    "manilla",
+    "mostacillas"
+  ],
+  "collection": "Nativa"
+}

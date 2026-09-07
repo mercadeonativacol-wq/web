@@ -1,0 +1,24 @@
+{
+  "id": "009",
+  "title": "Manilla Sombra Dorada",
+  "price": 25000,
+  "description": "Pulsera realizada con la técnica de tejido con mostacillas. Porta la elegancia del arte en tus muñecas con esta lujosa combinación de colores y un diseño diferente.",
+  "category": "Pulseras",
+  "image": "009.png",
+  "images": [
+    "009.png"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales textiles/metálicos",
+  "dimensions": "Estándar",
+  "stock": 15,
+  "tags": [
+    "Nativa",
+    "pulsera",
+    "manilla",
+    "mostacillas",
+    "dorado"
+  ],
+  "collection": "Nativa"
+}
