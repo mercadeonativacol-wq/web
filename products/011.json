@@ -1,0 +1,25 @@
+{
+  "id": "011",
+  "title": "Pulsera Évora",
+  "price": 20500,
+  "description": "Una mezcla de colores elegantes y lujo, realizada por manos de talentosos artesanos.",
+  "category": "Pulseras",
+  "image": "011.jpg",
+  "images": [
+    "011.jpg"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas, cuentas y materiales metálicos",
+  "dimensions": "Ajustable",
+  "stock": 100000,
+  "tags": [
+    "Évora",
+    "pulsera",
+    "rojo",
+    "blanco",
+    "dorado",
+    "elegante"
+  ],
+  "collection": "Évora"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "010",
+  "title": "Pulsera Gold",
+  "price": 20500,
+  "description": "Una pulsera sofisticada y sencilla que permite resaltar la belleza de la simpleza. Cada pulsera es elaborada con amor y con un dije distinto para resaltar la diversidad de cada individuo.",
+  "category": "Pulseras",
+  "image": "010.jpg",
+  "images": [
+    "010.jpg"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales metálicos",
+  "dimensions": "Ajustable",
+  "stock": 100000,
+  "tags": [
+    "Évora",
+    "pulsera",
+    "gold",
+    "dije",
+    "elegante"
+  ],
+  "collection": "Évora"
+}

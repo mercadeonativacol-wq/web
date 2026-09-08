@@ -1,7 +1,7 @@
 {
   "id": "004",
   "title": "Collar Alma de Rosa",
-  "price": 8618,
+  "price": 14000,
   "description": "Collar realizado con técnica crochet que ayuda a resaltar la elegancia de portar el arte en el cuello. Una nueva tendencia de chokers que han revolucionado el mercado.",
   "category": "Collares",
   "image": "004.png",
@@ -12,7 +12,7 @@
   "badge": "",
   "material": "Mostacillas y materiales textiles/metálicos",
   "dimensions": "Estándar",
-  "stock": 15,
+  "stock": 100000,
   "tags": [
     "Cayena",
     "collar",

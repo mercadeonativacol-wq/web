@@ -1,0 +1,25 @@
+{
+  "id": "012",
+  "title": "Manilla Penumbra",
+  "price": 20500,
+  "description": "Pulsera realizada con la técnica de tejido con mostacillas. Porta la elegancia del arte en tus muñecas con esta lujosa y discreta combinación de colores.",
+  "category": "Pulseras",
+  "image": "012.jpg",
+  "images": [
+    "012.jpg"
+  ],
+  "embeds": [],
+  "badge": "",
+  "material": "Mostacillas y materiales textiles/metálicos",
+  "dimensions": "Ajustable",
+  "stock": 100000,
+  "tags": [
+    "Nativa",
+    "pulsera",
+    "manilla",
+    "mostacillas",
+    "negro",
+    "dorado"
+  ],
+  "collection": "Nativa"
+}

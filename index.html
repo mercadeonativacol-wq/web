@@ -975,6 +975,26 @@
     cursor: not-allowed;
   }
 
+  .bulk-btn {
+    background: transparent;
+    color: var(--vino);
+  }
+
+  .bulk-btn:hover { background: var(--vino); color: var(--marfil); }
+
+  .bulk-btn:disabled {
+    border-color: var(--gris-claro);
+    background: transparent;
+    color: var(--gris-claro);
+    cursor: not-allowed;
+  }
+
+  .modal-actions-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
   /* ---------- CART ---------- */
 
   .cart-overlay {
@@ -1093,6 +1113,15 @@
     background: transparent;
     color: var(--vino);
     cursor: pointer;
+  }
+
+  .qty-btn-bulk {
+    width: auto;
+    height: 26px;
+    padding: 0 8px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .5px;
   }
 
   .remove-item {
@@ -1737,9 +1766,6 @@
             <a class="social-btn" href="https://www.instagram.com/nativa_bisuteria_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Nativa Bisutería">
               <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.81s-.01 3.56-.07 4.81c-.15 3.22-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.63-.07-4.81s.02-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-2.27.1-3.33 1.18-3.43 3.43-.06 1.24-.07 1.6-.07 4.75s.01 3.52.07 4.76c.1 2.24 1.15 3.33 3.43 3.43 1.24.06 1.6.07 4.76.07s3.52-.01 4.76-.07c2.27-.1 3.33-1.18 3.43-3.43.06-1.24.07-1.6.07-4.76s-.01-3.51-.07-4.75c-.1-2.25-1.16-3.33-3.43-3.43-1.24-.06-1.6-.07-4.76-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.13-1.99a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
             </a>
-            <a class="social-btn" href="https://www.tiktok.com/@nativacol" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Nativa Bisutería">
-              <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.3c0 1.5-1.2 2.75-2.75 2.75a2.75 2.75 0 0 1-.4-5.47v-3.24a5.98 5.98 0 0 0-.6-.03A5.99 5.99 0 1 0 15.6 15.3V9.2a8.16 8.16 0 0 0 4.6 1.42V7.4a4.85 4.85 0 0 1-3.6-2.02A4.84 4.84 0 0 1 16.6 2z"/></svg>
-            </a>
           </div>
         </div>
         <div class="legal-block">
@@ -1852,9 +1878,6 @@
   <div class="social-links" style="justify-content:center;">
     <a class="social-btn" href="https://www.instagram.com/nativa_bisuteria_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Nativa Bisutería">
       <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.81s-.01 3.56-.07 4.81c-.15 3.22-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.63-.07-4.81s.02-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-2.27.1-3.33 1.18-3.43 3.43-.06 1.24-.07 1.6-.07 4.75s.01 3.52.07 4.76c.1 2.24 1.15 3.33 3.43 3.43 1.24.06 1.6.07 4.76.07s3.52-.01 4.76-.07c2.27-.1 3.33-1.18 3.43-3.43.06-1.24.07-1.6.07-4.76s-.01-3.51-.07-4.75c-.1-2.25-1.16-3.33-3.43-3.43-1.24-.06-1.6-.07-4.76-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.13-1.99a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
-    </a>
-    <a class="social-btn" href="https://www.tiktok.com/@nativacol" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Nativa Bisutería">
-      <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.3c0 1.5-1.2 2.75-2.75 2.75a2.75 2.75 0 0 1-.4-5.47v-3.24a5.98 5.98 0 0 0-.6-.03A5.99 5.99 0 1 0 15.6 15.3V9.2a8.16 8.16 0 0 0 4.6 1.42V7.4a4.85 4.85 0 0 1-3.6-2.02A4.84 4.84 0 0 1 16.6 2z"/></svg>
     </a>
   </div>
 </footer>
@@ -2100,23 +2123,35 @@ function filterProducts(cat) {
   renderProducts();
 }
 
-function addToCart(id) {
+function addToCart(id, qty = 1) {
   const product = ALL_PRODUCTS.find(p => p.id === id);
   if (!product) return;
   if (product.stock === 0) { showToast('Producto agotado'); return; }
 
   const item = cart.find(i => i.id === id);
-  if (item) {
-    if (product.stock !== undefined && item.qty >= product.stock) {
-      showToast('Máximo stock alcanzado'); return;
+  const currentQty = item ? item.qty : 0;
+
+  if (product.stock !== undefined) {
+    const restante = product.stock - currentQty;
+    if (restante <= 0) { showToast('Máximo stock alcanzado'); return; }
+    if (qty > restante) {
+      qty = restante;
+      showToast(`Solo quedan ${restante} disponibles, se ajustó la cantidad`);
+      if (item) item.qty += qty; else cart.push({ id, qty, price: product.price, title: product.title });
+      saveCart();
+      updateCartUI();
+      return;
     }
-    item.qty++;
+  }
+
+  if (item) {
+    item.qty += qty;
   } else {
-    cart.push({ id, qty: 1, price: product.price, title: product.title });
+    cart.push({ id, qty, price: product.price, title: product.title });
   }
   saveCart();
   updateCartUI();
-  showToast('Producto añadido al carrito');
+  showToast(qty > 1 ? `${qty} unidades añadidas al carrito` : 'Producto añadido al carrito');
 }
 
 function removeFromCart(id) {
@@ -2130,8 +2165,13 @@ function changeQty(id, delta) {
   if (!item) return;
   const product = ALL_PRODUCTS.find(p => p.id === id);
 
-  if (delta > 0 && product && product.stock !== undefined && item.qty >= product.stock) {
-    showToast('Máximo stock alcanzado'); return;
+  if (delta > 0 && product && product.stock !== undefined) {
+    const restante = product.stock - item.qty;
+    if (restante <= 0) { showToast('Máximo stock alcanzado'); return; }
+    if (delta > restante) {
+      delta = restante;
+      showToast(`Solo quedan ${restante} disponibles, se ajustó la cantidad`);
+    }
   }
 
   item.qty += delta;
@@ -2173,9 +2213,11 @@ function updateCartUI() {
           <h4>${item.title}</h4>
           <div class="item-price">${fmtPrice(item.price)} c/u</div>
           <div class="qty-controls">
+            <button class="qty-btn qty-btn-bulk" onclick="changeQty('${item.id}', -1000)" title="Restar 1000">−1000</button>
             <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
             <span>${item.qty}</span>
             <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+            <button class="qty-btn qty-btn-bulk" onclick="changeQty('${item.id}', 1000)" title="Sumar 1000">+1000</button>
           </div>
           <button class="remove-item" onclick="removeFromCart('${item.id}')">Eliminar</button>
         </div>
@@ -2364,9 +2406,14 @@ function renderProductModal() {
         <span class="price">${fmtPrice(p.price)}</span>
         ${p.stock !== undefined ? `<div class="stock-tag">${p.stock} disponibles</div>` : ''}
       </div>
-      <button class="add-btn" onclick="addToCart('${p.id}')" ${p.stock === 0 ? 'disabled' : ''}>
-        ${p.stock === 0 ? 'Agotado' : 'Añadir al carrito'}
-      </button>
+      <div class="modal-actions-buttons">
+        <button class="add-btn" onclick="addToCart('${p.id}')" ${p.stock === 0 ? 'disabled' : ''}>
+          ${p.stock === 0 ? 'Agotado' : 'Añadir al carrito'}
+        </button>
+        <button class="add-btn bulk-btn" onclick="addToCart('${p.id}', 1000)" ${p.stock === 0 ? 'disabled' : ''}>
+          Comprar por mayor (+1000)
+        </button>
+      </div>
     </div>
   `;
 }

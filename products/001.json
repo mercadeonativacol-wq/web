@@ -1,7 +1,7 @@
 {
   "id": "001",
   "title": "Arete Mandala del Sol",
-  "price": 20500,
+  "price": 20000,
   "description": "Arete realizado con la técnica de tejido con mostacillas. Porta la elegancia de las artesanías con esta lujosa combinación de colores y sobriedad para el día a día.",
   "category": "Aretes",
   "image": "001.png",
@@ -12,7 +12,7 @@
   "badge": "",
   "material": "Mostacillas y materiales textiles/metálicos",
   "dimensions": "Estándar",
-  "stock": 15,
+  "stock": 100000,
   "tags": [
     "Nativa",
     "aretes",
