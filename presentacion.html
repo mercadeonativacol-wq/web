@@ -206,7 +206,7 @@
     z-index: 5;
   }
 
-  /* ---------- Backdrop crossfade (the "background" moving between slides) ---------- */
+  /* ---------- Backdrop crossfade ---------- */
   .slides-backdrop { position: fixed; inset: 0; z-index: -1; display: none; }
   .slides-mode .slides-backdrop { display: block; }
   .sb-layer { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
@@ -253,6 +253,73 @@
     letter-spacing: 1.4px;
   }
 
+  /* ---------- LIGHTBOX STYLES ---------- */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 600;
+    background: rgba(42, 37, 36, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+  .lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(.92);
+    transition: transform .35s cubic-bezier(.22,.68,0,1);
+  }
+  .lightbox-modal.active .lightbox-content {
+    transform: scale(1);
+  }
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border: 1px solid var(--dorado-suave);
+    box-shadow: 0 12px 32px rgba(0,0,0,.5);
+    background: var(--vino-oscuro);
+  }
+  .lightbox-caption {
+    margin-top: 14px;
+    color: var(--marfil);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    letter-spacing: .8px;
+    text-align: center;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    background: transparent;
+    border: 0;
+    color: var(--dorado-suave);
+    font-size: 24px;
+    line-height: 1;
+    padding: 4px 8px;
+    transition: color .2s ease;
+  }
+  .lightbox-close:hover { color: var(--marfil); }
+
+  /* Indicador visual de imagen ampliable */
+  img.lightbox-trigger {
+    cursor: zoom-in;
+  }
+
   /* ---------- TOAST ---------- */
   .ps-toast {
     position: fixed;
@@ -273,7 +340,7 @@
   }
   .ps-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-  /* ---------- Click ripple (feedback wherever the user clicks) ---------- */
+  /* ---------- Click ripple ---------- */
   .click-ripple {
     position: fixed;
     left: 0; top: 0;
@@ -346,7 +413,6 @@
   }
   .slide-title.letters-in .letter { opacity: 1; transform: translateY(0); }
 
-  /* ---------- Emphasis for sparser slides ---------- */
   .slide-title.xl { font-size: clamp(46px, 7.4vw, 82px); }
 
   .mega-mark {
@@ -365,7 +431,6 @@
     user-select: none;
     white-space: nowrap;
   }
-  .mega-mark.on-dark { color: rgba(224, 194, 146, .09); }
 
   section.slide .slide-inner { position: relative; z-index: 1; }
 
@@ -380,14 +445,11 @@
 
   .slide-lead + .slide-lead { margin-top: 16px; }
 
-  /* reveal-on-scroll */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
   }
-  .reveal.from-left { transform: translateX(-32px); }
-  .reveal.from-right { transform: translateX(32px); }
   .reveal.in-view { opacity: 1; transform: translate(0,0); }
 
   /* ---------- COVER ---------- */
@@ -486,7 +548,7 @@
     50% { transform: scaleY(1); opacity: 1; }
   }
 
-  /* ---------- ACCORDION (generic) ---------- */
+  /* ---------- ACCORDION ---------- */
   .accordion { width: 100%; text-align: left; border-top: 1px solid var(--linea); }
   .acc-item { border-bottom: 1px solid var(--linea); }
 
@@ -530,351 +592,6 @@
 
   .acc-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
   .acc-body-inner { padding: 0 4px 24px; color: var(--gris); font-size: 12px; line-height: 1.9; }
-
-  /* ---------- CARDS GRID ---------- */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-    width: 100%;
-    text-align: left;
-  }
-
-  .info-card {
-    padding: 26px 24px;
-    background: var(--crema-clara);
-    border: 1px solid var(--linea);
-    border-top: 2px solid var(--dorado);
-  }
-
-  .info-card h3 {
-    margin-bottom: 10px;
-    color: var(--vino);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 21px;
-    font-weight: 600;
-  }
-
-  .info-card p { color: var(--gris); font-size: 11.5px; line-height: 1.85; }
-
-  /* ---------- IDENTIDAD: swatches + toggles ---------- */
-  .identity-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-    width: 100%;
-  }
-
-  .swatch-card {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 1px solid var(--linea);
-    background: var(--crema-clara);
-    text-align: left;
-    overflow: hidden;
-    transition: border-color .25s ease, transform .25s ease;
-  }
-  .swatch-card:hover { border-color: var(--dorado); transform: translateY(-3px); }
-
-  .swatch-face {
-    height: 90px;
-    display: flex;
-    align-items: flex-end;
-    padding: 12px 16px;
-  }
-
-  .swatch-face span {
-    color: var(--marfil);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    text-shadow: 0 1px 3px rgba(0,0,0,.3);
-  }
-
-  .swatch-body { padding: 16px 18px 20px; }
-  .swatch-body h4 { margin-bottom: 6px; color: var(--vino); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; }
-  .swatch-body p { color: var(--gris); font-size: 10.5px; line-height: 1.8; }
-
-  .type-specimen {
-    padding: 26px 24px;
-    border: 1px solid var(--linea);
-    background: var(--crema-clara);
-    text-align: left;
-  }
-  .type-specimen .sample-serif {
-    color: var(--vino);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 30px;
-    margin-bottom: 6px;
-  }
-  .type-specimen .sample-sans {
-    color: var(--negro);
-    font-size: 11px;
-    letter-spacing: .3px;
-    margin-bottom: 12px;
-  }
-  .type-specimen small { color: var(--gris); font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; }
-
-  .symbol-card {
-    grid-column: span 1;
-    padding: 26px 24px;
-    border: 1px solid var(--linea);
-    background: var(--vino-oscuro);
-    text-align: left;
-  }
-  .symbol-card img { width: 54px; margin-bottom: 14px; filter: brightness(0) saturate(100%) invert(78%) sepia(28%) saturate(573%) hue-rotate(3deg) brightness(96%) contrast(92%); }
-  .symbol-card h4 { color: var(--dorado); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; margin-bottom: 8px; }
-  .symbol-card p { color: var(--crema-clara); font-size: 10.5px; line-height: 1.85; }
-
-  /* ---------- ESENCIA (quote) ---------- */
-  .esencia {
-    background: var(--vino-oscuro);
-    border-bottom: none;
-  }
-  .esencia .eyebrow { color: var(--dorado-suave); }
-  .esencia-quote {
-    color: var(--marfil);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(24px, 3.6vw, 38px);
-    line-height: 1.4;
-  }
-  .esencia .slide-lead { color: var(--crema-clara); margin-top: 26px; }
-
-  .esencia-mark {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(340px, 46vw, 620px);
-    opacity: .08;
-    filter: brightness(0) saturate(100%) invert(78%) sepia(28%) saturate(573%) hue-rotate(3deg) brightness(96%) contrast(92%);
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-
-  /* ---------- PUBLICO (dos columnas) ---------- */
-  .duo-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(24px, 4vw, 50px);
-    width: 100%;
-    text-align: left;
-  }
-  .duo-block h4 {
-    margin-bottom: 16px;
-    color: var(--dorado);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 19px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--linea);
-  }
-  .duo-block ul { list-style: none; }
-  .duo-block li {
-    position: relative;
-    padding: 10px 0 10px 20px;
-    color: var(--gris);
-    font-size: 12px;
-    line-height: 1.7;
-    border-bottom: 1px solid var(--linea);
-  }
-  .duo-block li::before {
-    content: '✦';
-    position: absolute;
-    left: 0; top: 10px;
-    color: var(--dorado);
-    font-size: 9px;
-  }
-  @media (max-width: 640px) { .duo-list { grid-template-columns: 1fr; } }
-
-  /* ---------- PRODUCTOS (tabs + placeholders) ---------- */
-  .prod-tabs {
-    display: inline-flex;
-    gap: 0;
-    margin-bottom: 34px;
-    border: 1px solid var(--linea);
-  }
-  .prod-tab {
-    padding: 11px 22px;
-    border: 0;
-    border-right: 1px solid var(--linea);
-    background: var(--crema-clara);
-    color: var(--gris);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: background-color .2s ease, color .2s ease;
-  }
-  .prod-tab:last-child { border-right: 0; }
-  .prod-tab.active, .prod-tab:hover { background: var(--vino); color: var(--marfil); }
-
-  .prod-grid {
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    width: 100%;
-  }
-  .prod-grid.active { display: grid; }
-
-  .prod-placeholder {
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 18px;
-    border: 1.5px dashed var(--gris-claro);
-    background: var(--crema-clara);
-    color: var(--gris);
-    transition: border-color .25s ease, background-color .25s ease;
-  }
-  .prod-placeholder:hover { border-color: var(--dorado); background: var(--crema); }
-  .prod-placeholder svg { width: 34px; height: 34px; stroke: var(--vino); fill: none; stroke-width: 1.3; opacity: .75; }
-  .prod-placeholder .ph-label { color: var(--vino); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; }
-  .prod-placeholder .ph-tag { font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); }
-
-  @media (max-width: 640px) { .prod-grid { grid-template-columns: repeat(2, 1fr); } }
-
-  /* ---------- PRODUCTOS REALES (mismo origen que la tienda: products/*.json) ---------- */
-  .prod-card {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 14px;
-    border: 1px solid var(--linea);
-    background: var(--crema-clara);
-    text-align: left;
-    transition: border-color .25s ease, transform .25s ease;
-  }
-  .prod-card:hover { border-color: var(--dorado); transform: translateY(-3px); }
-
-  .prod-card-img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--crema);
-  }
-  .prod-card-img img { width: 100%; height: auto; }
-
-  .prod-card h4 { color: var(--vino); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; line-height: 1.3; }
-  .prod-card-desc {
-    color: var(--gris);
-    font-size: 10.5px;
-    line-height: 1.65;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .prod-card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .prod-card-price { color: var(--vino); font-size: 12px; font-weight: 600; letter-spacing: .4px; }
-
-  .prod-empty { color: var(--gris); font-size: 12px; line-height: 1.8; padding: 18px 0; text-align: center; }
-
-  /* ---------- COLECCION ---------- */
-  .collection-name {
-    color: var(--vino);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(38px, 6vw, 64px);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin: 6px 0 10px;
-  }
-  .collection-note {
-    display: inline-block;
-    margin-top: 14px;
-    color: var(--gris);
-    font-size: 9.5px;
-    font-style: italic;
-    letter-spacing: .3px;
-  }
-
-  /* ---------- PIEZAS DESTACADAS ---------- */
-  .piece-card { text-align: left; }
-  .piece-card .acc-body-inner p + p { margin-top: 8px; }
-  .piece-tag {
-    display: inline-block;
-    margin-top: 6px;
-    padding: 3px 9px;
-    border: 1px solid var(--linea);
-    background: var(--crema-clara);
-    color: var(--gris);
-    font-size: 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .piece-badge { border-color: var(--dorado); color: var(--vino); background: rgba(212, 163, 79, .12); }
-
-  .piece-detail { display: flex; gap: 14px; align-items: flex-start; }
-  .piece-thumb { width: 72px; height: 72px; object-fit: cover; border: 1px solid var(--linea); background: var(--crema); flex-shrink: 0; }
-  .piece-text { min-width: 0; }
-  .piece-meta { margin-top: 8px; color: var(--gris); font-size: 10.5px; letter-spacing: .3px; text-transform: uppercase; }
-  .piece-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-
-  /* ---------- TIMELINE (qué viene) ---------- */
-  .timeline { width: 100%; text-align: left; }
-  .tl-item {
-    position: relative;
-    padding: 0 0 34px 30px;
-    border-left: 1px solid var(--linea);
-  }
-  .tl-item:last-child { padding-bottom: 0; }
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -5px; top: 2px;
-    width: 9px; height: 9px;
-    border-radius: 50%;
-    background: var(--dorado);
-  }
-  .tl-item h4 {
-    color: var(--vino);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 19px;
-    margin-bottom: 6px;
-  }
-  .tl-item span.tl-when {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--dorado);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-  }
-  .tl-item p { color: var(--gris); font-size: 12px; }
-
-  /* ---------- REDES ---------- */
-  .social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    width: 100%;
-  }
-  .social-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 30px 20px;
-    border: 1px solid var(--linea);
-    background: var(--crema-clara);
-    text-decoration: none;
-    transition: transform .3s ease, border-color .3s ease;
-  }
-  .social-card:hover { transform: translateY(-4px); border-color: var(--dorado); }
-  .social-card svg { width: 26px; height: 26px; fill: var(--vino); }
-  .social-card span { color: var(--vino); font-size: 10px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; }
-  .social-card small { color: var(--gris); font-size: 9.5px; }
 
   /* ---------- EQUIPO ---------- */
   .equipo-grid {
@@ -1099,42 +816,42 @@
       <p class="slide-lead reveal" style="margin-bottom:30px">Los departamentos que hacen posible NATIVA:</p>
       <div class="equipo-grid reveal" id="equipoGrid">
         <figure class="equipo-card">
-          <img class="equipo-photo" src="equipo/gerencia.jpg" alt="Equipo del departamento de Gerencia" loading="lazy" onerror="equipoImgFallback(this)">
+          <img class="equipo-photo lightbox-trigger" src="equipo/gerencia.jpg" alt="Equipo del departamento de Gerencia" loading="lazy" onerror="equipoImgFallback(this)">
           <figcaption>
             <span class="equipo-dep">Gerencia</span>
             <span class="equipo-dep-desc">Dirección general, planeación y toma de decisiones.</span>
           </figcaption>
         </figure>
         <figure class="equipo-card">
-          <img class="equipo-photo" src="equipo/mercadeo.jpg" alt="Equipo del departamento de Mercadeo" loading="lazy" onerror="equipoImgFallback(this)">
+          <img class="equipo-photo lightbox-trigger" src="equipo/mercadeo.jpg" alt="Equipo del departamento de Mercadeo" loading="lazy" onerror="equipoImgFallback(this)">
           <figcaption>
             <span class="equipo-dep">Mercadeo</span>
             <span class="equipo-dep-desc">Marca, redes sociales y estrategia comercial.</span>
           </figcaption>
         </figure>
         <figure class="equipo-card">
-          <img class="equipo-photo" src="equipo/compras.jpg" alt="Equipo del departamento de Compras" loading="lazy" onerror="equipoImgFallback(this)">
+          <img class="equipo-photo lightbox-trigger" src="equipo/compras.jpg" alt="Equipo del departamento de Compras" loading="lazy" onerror="equipoImgFallback(this)">
           <figcaption>
             <span class="equipo-dep">Compras</span>
             <span class="equipo-dep-desc">Proveedores, abastecimiento e inventarios.</span>
           </figcaption>
         </figure>
         <figure class="equipo-card">
-          <img class="equipo-photo" src="equipo/finanzas.jpg" alt="Equipo del departamento de Finanzas" loading="lazy" onerror="equipoImgFallback(this)">
+          <img class="equipo-photo lightbox-trigger" src="equipo/finanzas.jpg" alt="Equipo del departamento de Finanzas" loading="lazy" onerror="equipoImgFallback(this)">
           <figcaption>
             <span class="equipo-dep">Finanzas</span>
             <span class="equipo-dep-desc">Costos, presupuestos y fijación de precios.</span>
           </figcaption>
         </figure>
         <figure class="equipo-card">
-          <img class="equipo-photo" src="equipo/produccion.jpg" alt="Equipo del departamento de Producción" loading="lazy" onerror="equipoImgFallback(this)">
+          <img class="equipo-photo lightbox-trigger" src="equipo/produccion.jpg" alt="Equipo del departamento de Producción" loading="lazy" onerror="equipoImgFallback(this)">
           <figcaption>
             <span class="equipo-dep">Producción</span>
             <span class="equipo-dep-desc">Corte, ensamble, acabado y control de calidad.</span>
           </figcaption>
         </figure>
         <figure class="equipo-card">
-          <img class="equipo-photo" src="equipo/recursos-humanos.jpg" alt="Equipo del departamento de Recursos humanos" loading="lazy" onerror="equipoImgFallback(this)">
+          <img class="equipo-photo lightbox-trigger" src="equipo/recursos-humanos.jpg" alt="Equipo del departamento de Recursos humanos" loading="lazy" onerror="equipoImgFallback(this)">
           <figcaption>
             <span class="equipo-dep">Recursos humanos</span>
             <span class="equipo-dep-desc">Personal, roles y clima de trabajo.</span>
@@ -1164,10 +881,59 @@
 </div>
 <div class="ps-toast" id="psToast"></div>
 
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen ampliadas">✕</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
 <script>
   const slides = Array.from(document.querySelectorAll('section.slide'));
   let slidesModeActive = false;
   let currentIndex = 0;
+
+  // ---------- Lightbox Handler ----------
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt) {
+    if (!src) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightboxCaption.textContent = alt || '';
+    lightboxModal.classList.add('active');
+    lightboxModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    lightboxModal.classList.remove('active');
+    lightboxModal.setAttribute('aria-hidden', 'true');
+  }
+
+  lightboxClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLightbox();
+  });
+
+  lightboxModal.addEventListener('click', (e) => {
+    if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('.lightbox-trigger') || e.target.closest('.lightbox-trigger')) {
+      const img = e.target.matches('img') ? e.target : e.target.querySelector('img');
+      if (img && img.src) {
+        openLightbox(img.src, img.alt);
+      }
+    }
+  });
 
   // ---------- Letter-stagger title animation ----------
   function prepareTitleLetters(el) {
@@ -1199,11 +965,10 @@
   function animateTitle(titleEl) {
     if (!titleEl) return;
     titleEl.classList.remove('letters-in');
-    void titleEl.offsetWidth; // force reflow so the transition can retrigger
+    void titleEl.offsetWidth;
     requestAnimationFrame(() => titleEl.classList.add('letters-in'));
   }
 
-  // First-view reveal for titles while scrolling normally (one-time per title)
   const titleObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1234,7 +999,7 @@
     return best;
   }
 
-  // ---------- Click feedback: a ripple wherever you click, plus a letter replay ----------
+  // ---------- Click feedback ----------
   function spawnRipple(x, y) {
     const r = document.createElement('span');
     r.className = 'click-ripple';
@@ -1246,6 +1011,7 @@
   }
 
   document.addEventListener('click', (e) => {
+    if (lightboxModal.classList.contains('active')) return;
     spawnRipple(e.clientX, e.clientY);
     const activeSlide = slidesModeActive ? slides[currentIndex] : slides[closestSlideIndex()];
     if (activeSlide) animateTitle(activeSlide.querySelector('.slide-title'));
@@ -1288,9 +1054,7 @@
   });
   const dotButtons = Array.from(dotNav.children);
 
-  // ---------- Reveal (scroll-triggered entrances) ----------
-  // En modo scroll el observer revela cada elemento una sola vez; en modo slides
-  // las entradas se gestionan por diapositiva con playSlideReveals().
+  // ---------- Reveal ----------
   const revealObserver = new IntersectionObserver((entries) => {
     if (slidesModeActive) return;
     entries.forEach(entry => {
@@ -1310,13 +1074,11 @@
   }
   observeReveals(document);
 
-  // Entrada de contenido por diapositiva en modo slides: reinicia y repite las
-  // animaciones .reveal del slide con un ligero escalonado.
   function playSlideReveals(sec, baseDelay) {
     const els = Array.from(sec.querySelectorAll('.reveal'));
     if (!els.length) return;
     els.forEach(el => { el.style.transitionDelay = ''; el.classList.remove('in-view'); });
-    void sec.offsetWidth; // reflow: pinta el estado oculto antes de animar
+    void sec.offsetWidth;
     requestAnimationFrame(() => {
       els.forEach((el, i) => {
         el.style.transitionDelay = ((baseDelay || 140) + i * 90) + 'ms';
@@ -1361,15 +1123,7 @@
     toastTimer = setTimeout(() => psToast.classList.remove('show'), 2200);
   }
 
-  // ---------- Copy hex from identity swatches ----------
-  function copyHex(hex, btn) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(hex).catch(() => {});
-    }
-    showToast(hex + ' copiado');
-  }
-
-  // ---------- Slides mode (presentation) ----------
+  // ---------- Slides mode ----------
   const modeToggle = document.getElementById('modeToggle');
   const slidesExit = document.getElementById('slidesExit');
   const slidesControls = document.getElementById('slidesControls');
@@ -1377,23 +1131,15 @@
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
 
-  // ---------- Ajuste de escala por diapositiva según la resolución ----------
-  // Cada slide tiene una cantidad de contenido distinta. En pantallas grandes
-  // (proyector, monitor externo), una diapositiva con poco texto puede dejar
-  // mucho espacio vacío alrededor. Para evitarlo, medimos el tamaño natural
-  // del contenido de la diapositiva activa y lo agrandamos (sin deformarlo)
-  // para que ocupe mejor el espacio disponible; en pantallas donde el
-  // contenido ya llena la diapositiva, no se toca nada.
   const SLIDE_FIT_MIN_SCALE = 1;
   const SLIDE_FIT_MAX_SCALE = 1.6;
-  const SLIDE_FIT_SAFETY = 24; // margen de seguridad para no rozar los bordes
+  const SLIDE_FIT_SAFETY = 24;
 
   function fitSlideContent(slideEl) {
     if (!slideEl) return;
     const inner = slideEl.querySelector('.slide-inner');
     if (!inner) return;
 
-    // Se resetea antes de medir para obtener el tamaño natural, sin escala previa.
     inner.style.transform = 'none';
 
     const naturalWidth = inner.scrollWidth;
@@ -1437,7 +1183,6 @@
         s.scrollTop = 0;
         playSlideReveals(s);
         setTimeout(() => animateTitle(s.querySelector('.slide-title')), 180);
-        // Se calcula tras un frame para medir el layout ya visible de la diapositiva.
         requestAnimationFrame(() => fitSlideContent(s));
       }
     });
@@ -1451,8 +1196,6 @@
 
   function toggleSlidesMode() {
     const entering = !slidesModeActive;
-    // Medir la sección visible ANTES de cambiar el layout: en modo slides todas
-    // las secciones se superponen y closestSlideIndex() siempre devolvería 0.
     const startIdx = entering ? closestSlideIndex() : currentIndex;
 
     slidesModeActive = entering;
@@ -1466,8 +1209,6 @@
 
     if (entering) {
       currentIndex = startIdx;
-      // Dos frames: primero se pinta el estado oculto y luego entra la diapositiva,
-      // así la transición de entrada siempre es visible.
       requestAnimationFrame(() => requestAnimationFrame(renderSlideState));
     } else {
       slides.forEach(s => {
@@ -1490,31 +1231,37 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (!slidesModeActive) {
-      if (e.key === 'Escape') return;
-      return;
+    if (e.key === 'Escape') {
+      if (lightboxModal.classList.contains('active')) {
+        closeLightbox();
+        return;
+      }
+      if (slidesModeActive) {
+        toggleSlidesMode();
+        return;
+      }
     }
+    if (!slidesModeActive || lightboxModal.classList.contains('active')) return;
+
     if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) {
       e.preventDefault();
       goSlide(1);
     } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) {
       e.preventDefault();
       goSlide(-1);
-    } else if (e.key === 'Escape') {
-      toggleSlidesMode();
     }
   });
 
-  // Touch swipe navigation while in slides mode
+  // Touch swipe navigation
   let touchStartX = 0, touchStartY = 0;
   document.getElementById('slides').addEventListener('touchstart', (e) => {
-    if (!slidesModeActive || !e.touches[0]) return;
+    if (!slidesModeActive || !e.touches[0] || lightboxModal.classList.contains('active')) return;
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   }, { passive: true });
 
   document.getElementById('slides').addEventListener('touchend', (e) => {
-    if (!slidesModeActive || !e.changedTouches[0]) return;
+    if (!slidesModeActive || !e.changedTouches[0] || lightboxModal.classList.contains('active')) return;
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
@@ -1522,18 +1269,12 @@
     }
   }, { passive: true });
 
-  // ---------- Utilidades ----------
+  // Utilidades
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  }
-
-
-  // ---------- Equipo: fallback si falta una foto ----------
+  // Equipo fallback
   function equipoImgFallback(img) {
     const card = img.closest('.equipo-card');
     if (!card || card.querySelector('.equipo-placeholder')) return;
@@ -1544,7 +1285,7 @@
     img.replaceWith(ph);
   }
 
-  // ---------- Cover logo — subtle metallic sheen that follows the cursor ----------
+  // Cover logo effect
   (function () {
     const wrap = document.getElementById('coverLogoWrap');
     if (!wrap) return;
