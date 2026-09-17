@@ -724,7 +724,7 @@
   .prod-grid.active { display: grid; }
 
   .prod-placeholder {
-    aspect-ratio: 1 / 1.05;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -757,14 +757,13 @@
   .prod-card:hover { border-color: var(--dorado); transform: translateY(-3px); }
 
   .prod-card-img {
-    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     background: var(--crema);
   }
-  .prod-card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .prod-card-img img { width: 100%; height: auto; }
 
   .prod-card h4 { color: var(--vino); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; line-height: 1.3; }
   .prod-card-desc {
@@ -877,6 +876,73 @@
   .social-card span { color: var(--vino); font-size: 10px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; }
   .social-card small { color: var(--gris); font-size: 9.5px; }
 
+  /* ---------- EQUIPO ---------- */
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+  @media (max-width: 1000px) { .equipo-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .equipo-grid { grid-template-columns: 1fr; } }
+
+  .equipo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 12px 12px 16px;
+    border: 1px solid var(--linea);
+    background: var(--crema-clara);
+    text-align: center;
+    transition: transform .3s ease, border-color .3s ease;
+  }
+  .equipo-card:hover { transform: translateY(-4px); border-color: var(--dorado); }
+
+  .equipo-card .equipo-photo {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--linea);
+    background: var(--crema);
+  }
+
+  .equipo-card figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .equipo-dep {
+    color: var(--vino);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    letter-spacing: .5px;
+    line-height: 1.25;
+  }
+
+  .equipo-dep-desc {
+    color: var(--gris);
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .equipo-placeholder {
+    width: 100%;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1.5px dashed var(--gris-claro);
+    background: var(--crema);
+    color: var(--gris);
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .equipo-placeholder svg { width: 30px; height: 30px; stroke: var(--vino); fill: none; stroke-width: 1.3; opacity: .75; }
+
   /* ---------- CIERRE ---------- */
   .cierre {
     background: var(--vino-oscuro);
@@ -939,296 +1005,151 @@
         <img class="cover-logo" src="logo.svg" alt="Nativa Bisutería">
       </div>
       <p class="cover-sub">Bisutería artesanal · Hecha a mano</p>
-      <p class="cover-desc">Piezas nacidas de nuestras raíces, elaboradas con materiales de calidad y el cuidado de un oficio que no se apura. Esta es la historia detrás de cada detalle.</p>
+      <p class="cover-desc">Bisutería artesanal que nace de un proyecto de Ingeniería Industrial: donde el diseño hecho a mano se encuentra con la gestión, los procesos y la resolución de problemas.</p>
     </div>
     <div class="scroll-cue"><span></span>Desliza</div>
   </section>
 
-  <section class="slide" id="s-quienes" data-title="Quiénes somos">
+  <section class="slide" id="s-que-es" data-title="¿Qué es Nativa?">
+    <span class="mega-mark" aria-hidden="true">01</span>
+    <div class="slide-inner">
+      <span class="eyebrow reveal">01 · La marca</span>
+      <h2 class="slide-title xl">¿Qué es Nativa?</h2>
+      <p class="slide-lead reveal">Nativa es una marca de bisutería artesanal hecha 100% a mano: accesorios exclusivos que fusionan diseño, calidad y oficio, con piezas atemporales que reflejan la identidad de quien las lleva.</p>
+      <p class="slide-lead reveal">Su nombre representa aquello que es auténtico y nacido de un origen propio: una identidad que no busca imitar, sino transformar lo que tenemos en algo único.</p>
+    </div>
+  </section>
+
+  <section class="slide" id="s-origen" data-title="De dónde nace">
     <span class="mega-mark" aria-hidden="true">02</span>
     <div class="slide-inner">
-      <span class="eyebrow reveal">02 · Nuestra historia</span>
-      <h2 class="slide-title xl">¿Quiénes somos?</h2>
-      <p class="slide-lead reveal">Nativa nace de nuestras raíces y de la esencia de lo hecho a mano. Nuestro nombre representa aquello que es auténtico, propio y nacido de un origen: una identidad que no busca imitar, sino transformar lo que tenemos en algo único.</p>
-      <p class="slide-lead reveal">Creemos que el verdadero valor de una pieza está en todo aquello que no se ve a simple vista: las manos que la crean, el tiempo dedicado a cada detalle y la historia que existe detrás de ella. Por eso, cada pieza NATIVA lleva consigo el carácter de lo artesanal y la dedicación de quienes la hacen posible.</p>
+      <span class="eyebrow reveal">02 · El proyecto</span>
+      <h2 class="slide-title xl">De dónde nace</h2>
+      <p class="slide-lead reveal">Nativa nace como proyecto académico de Ingeniería Industrial: aplicar lo aprendido en el aula a un emprendimiento real, desde la idea hasta la puesta en marcha de una marca con tienda en línea.</p>
+      <p class="slide-lead reveal">Detrás de cada pieza hay estudio: análisis de mercado, diseño de procesos, costos, cadena de suministro y estrategia comercial. La artesanía es el alma; la ingeniería, la estructura que la hace sostenible.</p>
     </div>
   </section>
 
-  <section class="slide" id="s-mision" data-title="Misión">
-    <span class="mega-mark" aria-hidden="true">03</span>
-    <div class="slide-inner">
-      <span class="eyebrow reveal">03 · Propósito</span>
-      <h2 class="slide-title xl">Misión</h2>
-      <p class="slide-lead reveal">Creamos accesorios exclusivos que fusionan diseño, calidad y artesanía, elaborados 100% a mano con dedicación y atención al detalle. Ofrecemos a hombres y mujeres piezas atemporales que reflejan su identidad y estilo, revalorizando el oficio artesanal y transformándolo en una propuesta de lujo contemporáneo.</p>
+  <section class="slide" id="s-conocimientos" data-title="Conocimientos aplicados">
+    <div class="slide-inner wide">
+      <span class="eyebrow reveal">03 · Ingeniería Industrial en acción</span>
+      <h2 class="slide-title">Conocimientos de ingeniería industrial aplicados</h2>
+      <p class="slide-lead reveal" style="margin-bottom:26px">Lo que hemos visto en la carrera, puesto en práctica en el proyecto:</p>
+      <div class="accordion reveal" id="accConocimientos">
+        <div class="acc-item">
+          <button class="acc-head" onclick="toggleAcc(this)">
+            <span class="acc-head-text"><span class="acc-num">01</span><h3>Estudio de mercado y análisis de demanda</h3></span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Identificamos el público objetivo, analizamos la competencia y definimos la propuesta de valor a partir de datos, no de supuestos.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" onclick="toggleAcc(this)">
+            <span class="acc-head-text"><span class="acc-num">02</span><h3>Diseño de procesos productivos</h3></span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Estandarizamos cada etapa de fabricación artesanal — corte, ensamble, acabado y control de calidad — para lograr consistencia sin perder lo hecho a mano.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" onclick="toggleAcc(this)">
+            <span class="acc-head-text"><span class="acc-num">03</span><h3>Costos y presupuestos</h3></span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Calculamos costos de materiales, mano de obra y operación para fijar precios competitivos y sostenibles para el negocio.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" onclick="toggleAcc(this)">
+            <span class="acc-head-text"><span class="acc-num">04</span><h3>Cadena de suministro e inventarios</h3></span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Seleccionamos proveedores de materiales con criterios de calidad y trazabilidad, y planificamos compras e inventarios según la demanda.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" onclick="toggleAcc(this)">
+            <span class="acc-head-text"><span class="acc-num">05</span><h3>Gestión de calidad</h3></span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Cada pieza pasa por una inspección de acabados y resistencia antes de llegar al cliente: cero defectos como estándar.</p></div></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" onclick="toggleAcc(this)">
+            <span class="acc-head-text"><span class="acc-num">06</span><h3>Mercadeo y estrategia comercial</h3></span>
+            <span class="acc-icon">+</span>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner"><p>Construimos la identidad de marca, la presencia en redes sociales y la tienda en línea, aplicando principios de marketing y comercio electrónico.</p></div></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="slide" id="s-vision" data-title="Visión">
+  <section class="slide" id="s-importancia" data-title="Importancia del proyecto">
     <span class="mega-mark" aria-hidden="true">04</span>
     <div class="slide-inner">
-      <span class="eyebrow reveal">04 · Horizonte</span>
-      <h2 class="slide-title xl">Visión</h2>
-      <p class="slide-lead reveal">Para el semestre 2026-2, consolidarnos como una marca referente de bisutería artesanal en la región caribe, con proyección y reconocimiento en los mercados nacional e internacional, destacándonos por nuestro compromiso con el comercio justo, la dignificación del trabajo artesanal y el uso responsable de materiales y procesos ambientalmente sostenibles.</p>
+      <span class="eyebrow reveal">04 · Por qué importa</span>
+      <h2 class="slide-title xl">Importancia del proyecto</h2>
+      <p class="slide-lead reveal">Nativa demuestra que la Ingeniería Industrial no se queda en la teoría: es una herramienta para crear empresas reales, optimizar recursos y generar valor.</p>
+      <p class="slide-lead reveal">Además, revaloriza el trabajo artesanal local — dignificando el oficio y sus procesos — y sirve como modelo de emprendimiento aplicable a cualquier sector: análisis, planeación, ejecución y mejora continua.</p>
     </div>
   </section>
 
-  <section class="slide" id="s-valores" data-title="Valores">
-    <div class="slide-inner">
-      <span class="eyebrow reveal">05 · Lo que nos guía</span>
-      <h2 class="slide-title">Valores</h2>
-      <div class="accordion reveal" id="accValores">
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">01</span><h3>Autenticidad</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Cada pieza nace de manos reales, sin fórmulas ni producción en masa. Lo que ves es exactamente lo que somos.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">02</span><h3>El detalle</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Creemos que la diferencia vive en lo pequeño: un acabado, una curva, un cierre bien pensado. Ahí está el verdadero arte.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">03</span><h3>Raíces</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Nos inspiramos en la tradición artesanal colombiana y en materiales que vienen de la tierra, sin perder de vista dónde empezamos.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">04</span><h3>Cercanía</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Hablamos con nuestra comunidad como lo que somos: personas haciendo algo con cariño, para otras personas.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">05</span><h3>Constancia</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>El oficio se construye con tiempo, práctica y paciencia. No hay atajos para lo que está bien hecho.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-identidad" data-title="Identidad de marca">
+  <section class="slide" id="s-equipo" data-title="Nuestro equipo">
     <div class="slide-inner wide">
-      <span class="eyebrow reveal">06 · Cómo nos vemos</span>
-      <h2 class="slide-title">Identidad de marca</h2>
-      <div class="identity-grid reveal">
-        <button class="swatch-card" onclick="copyHex('#5C1A28', this)">
-          <div class="swatch-face" style="background:var(--vino)"><span>#5C1A28</span></div>
-          <div class="swatch-body"><h4>Vino</h4><p>Nuestro color principal: profundo, elegante y con carácter. Representa la seriedad del oficio artesanal.</p></div>
-        </button>
-        <button class="swatch-card" onclick="copyHex('#D4A34F', this)">
-          <div class="swatch-face" style="background:var(--dorado)"><span>#D4A34F</span></div>
-          <div class="swatch-body"><h4>Dorado</h4><p>El brillo de los detalles. Se usa con medida, para acentuar lo importante sin nunca saturar.</p></div>
-        </button>
-        <button class="swatch-card" onclick="copyHex('#F1E5D2', this)">
-          <div class="swatch-face" style="background:var(--crema)"><span style="color:var(--vino); text-shadow:none">#F1E5D2</span></div>
-          <div class="swatch-body"><h4>Crema</h4><p>El fondo cálido que deja respirar cada pieza y cada palabra. Natural, suave, atemporal.</p></div>
-        </button>
-        <div class="type-specimen">
-          <div class="sample-serif">Aa Cormorant</div>
-          <div class="sample-sans">Aa Montserrat</div>
-          <small>Tipografía — serif para títulos, sans para el resto</small>
-        </div>
-        <div class="symbol-card">
-          <img src="nativa.svg" alt="Símbolo flor de lis de Nativa">
-          <h4>Símbolo — Flor de lis</h4>
-          <p>Representa la unión entre tradición y sofisticación: el trabajo artesanal convertido en piezas que transmiten distinción.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide esencia" id="s-esencia" data-title="Nuestra esencia">
-    <img class="esencia-mark" src="nativa.svg" alt="" aria-hidden="true">
-    <div class="slide-inner">
-      <span class="eyebrow reveal">07 · Nuestra esencia</span>
-      <p class="esencia-quote reveal">"El arte de los detalles"</p>
-      <p class="slide-lead reveal">No hacemos bisutería para pasar desapercibida. Cada pieza se piensa desde el detalle que nadie pide pero todos notan: el cierre exacto, el peso justo, el brillo que no encandila. Eso es lo que convierte un accesorio en algo con carácter.</p>
-    </div>
-  </section>
-
-  <section class="slide" id="s-publico" data-title="A quién nos dirigimos">
-    <div class="slide-inner wide">
-      <span class="eyebrow reveal">08 · Nuestra gente</span>
-      <h2 class="slide-title">¿A quién nos dirigimos?</h2>
-      <p class="slide-lead reveal" style="margin-bottom:30px">Si esto te suena, hablamos el mismo idioma:</p>
-      <div class="duo-list reveal">
-        <div class="duo-block">
-          <h4>Tú buscas</h4>
-          <ul>
-            <li>Piezas que no repita todo el mundo</li>
-            <li>Algo hecho con intención, no en serie</li>
-            <li>Una historia detrás de lo que usas</li>
-            <li>Materiales de calidad y duraderos</li>
-          </ul>
-        </div>
-        <div class="duo-block">
-          <h4>Tú valoras</h4>
-          <ul>
-            <li>El trabajo artesanal y local</li>
-            <li>La elegancia sin exceso</li>
-            <li>El detalle sobre la cantidad</li>
-            <li>Las marcas con identidad propia</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-productos" data-title="Nuestros productos">
-    <div class="slide-inner wide">
-      <span class="eyebrow reveal">09 · Catálogo</span>
-      <h2 class="slide-title">Nuestros productos</h2>
-      <p class="slide-lead reveal" style="margin-bottom:36px">Un vistazo a lo que ya está disponible en la tienda, con la misma información que encontrarás en la web.</p>
-      <div class="prod-tabs reveal" id="prodTabs" role="tablist"></div>
-
-      <div id="prodGrids"><p class="prod-empty reveal">Cargando catálogo…</p></div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-propuesta" data-title="Propuesta de valor">
-    <div class="slide-inner wide">
-      <span class="eyebrow reveal">10 · Diferenciación</span>
-      <h2 class="slide-title">¿Qué nos diferencia?</h2>
-      <div class="card-grid reveal">
-        <div class="info-card"><h3>Hecho a mano</h3><p>Cada pieza pasa por manos artesanas, no por una línea de producción.</p></div>
-        <div class="info-card"><h3>Materiales de calidad</h3><p>Seleccionamos insumos con origen y trazabilidad, no atajos industriales.</p></div>
-        <div class="info-card"><h3>Piezas únicas</h3><p>Ediciones limitadas: lo que llevas no lo lleva cualquiera.</p></div>
-        <div class="info-card"><h3>Historia y origen</h3><p>Detrás de cada diseño hay una razón, no solo una tendencia.</p></div>
-        <div class="info-card"><h3>Empaque con intención</h3><p>La experiencia empieza antes de abrir la caja.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-coleccion" data-title="Primer lanzamiento">
-    <span class="mega-mark" aria-hidden="true">11</span>
-    <div class="slide-inner">
-      <span class="eyebrow reveal">11 · Lanzamiento</span>
-      <h2 class="slide-title xl" style="margin-bottom:6px">Primer lanzamiento</h2>
-      <p class="slide-lead reveal">Nuestro debut no llega como una sola colección, sino como tres mini colecciones que conviven bajo el mismo espíritu Nativa.</p>
-      <div class="card-grid reveal" style="margin-top:26px">
-        <div class="info-card"><h3>Cayena</h3><p>Color y carácter: piezas vibrantes que llevan la calidez y la fuerza de un tono que no pasa desapercibido.</p></div>
-        <div class="info-card"><h3>Nativa</h3><p>La esencia de la marca en su forma más pura: diseños sobrios que hablan de origen y de raíz.</p></div>
-        <div class="info-card"><h3>Évora</h3><p>Elegancia serena: líneas refinadas para quienes buscan sutileza en cada detalle.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-inspiracion" data-title="Inspiración y concepto">
-    <span class="mega-mark" aria-hidden="true">12</span>
-    <div class="slide-inner">
-      <span class="eyebrow reveal">12 · Concepto</span>
-      <h2 class="slide-title xl">Inspiración y concepto de cada mini colección</h2>
-      <p class="slide-lead reveal">Cayena, Nativa y Évora parten de una misma raíz — lo hecho a mano, lo auténtico — pero cada una explora un carácter propio dentro de ese universo.</p>
-      <p class="slide-lead reveal">Juntas forman el punto de partida de todo lo que representa la marca: piezas simples, bien hechas, sin exceso de adornos y con un carácter que se nota al tacto tanto como a la vista.</p>
-    </div>
-  </section>
-
-  <section class="slide" id="s-piezas" data-title="Piezas destacadas">
-    <div class="slide-inner">
-      <span class="eyebrow reveal">13 · Selección</span>
-      <h2 class="slide-title">Piezas destacadas</h2>
-      <p class="slide-lead reveal" style="margin-bottom:26px">Selección del catálogo actual, con la misma información que en la tienda.</p>
-      <div class="accordion reveal" id="featuredAccordion"><p class="prod-empty">Cargando piezas…</p></div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-experiencia" data-title="Experiencia Nativa">
-    <div class="slide-inner">
-      <span class="eyebrow reveal">14 · Al abrir la caja</span>
-      <h2 class="slide-title">La experiencia NATIVA</h2>
-      <p class="slide-lead reveal" style="margin-bottom:20px">Empaque y presentación, paso a paso.</p>
-      <div class="accordion reveal">
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">01</span><h3>La caja</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Cada pedido llega en una caja sobria en tono crema, pensada para durar más que el envío.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">02</span><h3>El detalle dorado</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Papel envolvente cerrado con un acabado dorado y el símbolo de la flor de lis.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">03</span><h3>La tarjeta</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Una tarjeta cuenta el origen de la pieza: materiales, cuidado y la historia detrás del diseño.</p></div></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-head" onclick="toggleAcc(this)">
-            <span class="acc-head-text"><span class="acc-num">04</span><h3>El detalle final</h3></span>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body"><div class="acc-body-inner"><p>Un pequeño gesto de agradecimiento, porque cada pedido es también una relación que empieza.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-futuro" data-title="Qué viene">
-    <div class="slide-inner">
-      <span class="eyebrow reveal">15 · Camino a seguir</span>
-      <h2 class="slide-title">¿Qué viene para NATIVA?</h2>
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <span class="tl-when">Corto plazo</span>
-          <h4>Ampliar el catálogo</h4>
-          <p>Sumar nuevas piezas a las líneas de aretes, collares y manillas, y afinar la tienda en línea.</p>
-        </div>
-        <div class="tl-item">
-          <span class="tl-when">Mediano plazo</span>
-          <h4>Alianzas y presencia física</h4>
-          <p>Colaboraciones con artesanos locales y primeras apariciones en ferias o pop-ups.</p>
-        </div>
-        <div class="tl-item">
-          <span class="tl-when">Largo plazo</span>
-          <h4>Comunidad NATIVA</h4>
-          <p>Construir una comunidad fiel alrededor de la marca, con miras a crecer más allá de Colombia.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide" id="s-redes" data-title="Redes sociales">
-    <div class="slide-inner">
-      <span class="eyebrow reveal">16 · Encuéntranos</span>
-      <h2 class="slide-title">Redes sociales / cómo encontrarnos</h2>
-      <div class="social-grid reveal">
-        <a class="social-card" href="https://www.instagram.com/nativa_bisuteria_/" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.81s-.01 3.56-.07 4.81c-.15 3.22-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.63-.07-4.81s.02-3.56.07-4.81c.15-3.23 1.66-4.77 4.92-4.92C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-2.27.1-3.33 1.18-3.43 3.43-.06 1.24-.07 1.6-.07 4.75s.01 3.52.07 4.76c.1 2.24 1.15 3.33 3.43 3.43 1.24.06 1.6.07 4.76.07s3.52-.01 4.76-.07c2.27-.1 3.33-1.18 3.43-3.43.06-1.24.07-1.6.07-4.76s-.01-3.51-.07-4.75c-.1-2.25-1.16-3.33-3.43-3.43-1.24-.06-1.6-.07-4.76-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.13-1.99a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
-          <span>Instagram</span>
-          <small>@nativa_bisuteria_</small>
-        </a>
-        <a class="social-card" href="mailto:gerencia@nativacol.shop">
-          <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
-          <span>Correo</span>
-          <small>gerencia@nativacol.shop</small>
-        </a>
+      <span class="eyebrow reveal">05 · Las personas</span>
+      <h2 class="slide-title">Nuestro equipo</h2>
+      <p class="slide-lead reveal" style="margin-bottom:30px">Los departamentos que hacen posible NATIVA:</p>
+      <div class="equipo-grid reveal" id="equipoGrid">
+        <figure class="equipo-card">
+          <img class="equipo-photo" src="equipo/gerencia.jpg" alt="Equipo del departamento de Gerencia" loading="lazy" onerror="equipoImgFallback(this)">
+          <figcaption>
+            <span class="equipo-dep">Gerencia</span>
+            <span class="equipo-dep-desc">Dirección general, planeación y toma de decisiones.</span>
+          </figcaption>
+        </figure>
+        <figure class="equipo-card">
+          <img class="equipo-photo" src="equipo/mercadeo.jpg" alt="Equipo del departamento de Mercadeo" loading="lazy" onerror="equipoImgFallback(this)">
+          <figcaption>
+            <span class="equipo-dep">Mercadeo</span>
+            <span class="equipo-dep-desc">Marca, redes sociales y estrategia comercial.</span>
+          </figcaption>
+        </figure>
+        <figure class="equipo-card">
+          <img class="equipo-photo" src="equipo/compras.jpg" alt="Equipo del departamento de Compras" loading="lazy" onerror="equipoImgFallback(this)">
+          <figcaption>
+            <span class="equipo-dep">Compras</span>
+            <span class="equipo-dep-desc">Proveedores, abastecimiento e inventarios.</span>
+          </figcaption>
+        </figure>
+        <figure class="equipo-card">
+          <img class="equipo-photo" src="equipo/finanzas.jpg" alt="Equipo del departamento de Finanzas" loading="lazy" onerror="equipoImgFallback(this)">
+          <figcaption>
+            <span class="equipo-dep">Finanzas</span>
+            <span class="equipo-dep-desc">Costos, presupuestos y fijación de precios.</span>
+          </figcaption>
+        </figure>
+        <figure class="equipo-card">
+          <img class="equipo-photo" src="equipo/produccion.jpg" alt="Equipo del departamento de Producción" loading="lazy" onerror="equipoImgFallback(this)">
+          <figcaption>
+            <span class="equipo-dep">Producción</span>
+            <span class="equipo-dep-desc">Corte, ensamble, acabado y control de calidad.</span>
+          </figcaption>
+        </figure>
+        <figure class="equipo-card">
+          <img class="equipo-photo" src="equipo/recursos-humanos.jpg" alt="Equipo del departamento de Recursos humanos" loading="lazy" onerror="equipoImgFallback(this)">
+          <figcaption>
+            <span class="equipo-dep">Recursos humanos</span>
+            <span class="equipo-dep-desc">Personal, roles y clima de trabajo.</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
   <section class="slide cierre" id="s-cierre" data-title="Cierre">
-    <span class="mega-mark on-dark" aria-hidden="true">17</span>
     <div class="slide-inner">
-      <span class="eyebrow reveal">17 · Gracias</span>
-      <h2 class="slide-title xl">Gracias por conocer NATIVA</h2>
-      <p class="slide-lead reveal">Esto apenas comienza. Cada pieza que hacemos es un paso más en construir una marca que honra lo hecho a mano, el detalle y nuestras raíces — y nos encantaría seguir construyéndola contigo.</p>
+      <span class="eyebrow reveal">07 · Gracias</span>
+      <h2 class="slide-title xl">Resolviendo problemas, creando valor</h2>
+      <p class="slide-lead reveal">La Ingeniería Industrial es esto: ver un problema real, analizarlo, diseñar una solución y hacerla funcionar. Con NATIVA lo vivimos en cada decisión — y es solo el comienzo de todo lo que esta carrera nos permite construir.</p>
+      <p class="slide-lead reveal">Si te apasiona optimizar procesos, emprender y transformar ideas en realidades, la Ingeniería Industrial es para ti. Te invitamos a conocerla y estudiarla.</p>
       <a class="cierre-cta reveal" href="index.html">Explorar la tienda</a>
     </div>
   </section>
@@ -1238,7 +1159,7 @@
 <button class="slides-exit" id="slidesExit" onclick="toggleSlidesMode()" hidden>✕ Salir</button>
 <div class="slides-controls" id="slidesControls" hidden>
   <button class="sc-btn" id="prevBtn" onclick="goSlide(-1)" aria-label="Diapositiva anterior">‹</button>
-  <span class="sc-counter" id="slideCounter">1 / 17</span>
+  <span class="sc-counter" id="slideCounter">1 / 7</span>
   <button class="sc-btn" id="nextBtn" onclick="goSlide(1)" aria-label="Siguiente diapositiva">›</button>
 </div>
 <div class="ps-toast" id="psToast"></div>
@@ -1430,12 +1351,6 @@
     }
   }
 
-  // ---------- Product tabs (categorías dinámicas desde el catálogo) ----------
-  function showProdTab(cat, btn) {
-    document.querySelectorAll('.prod-tab').forEach(t => t.classList.toggle('active', t === btn));
-    document.querySelectorAll('.prod-grid').forEach(g => g.classList.toggle('active', g.dataset.cat === cat));
-  }
-
   // ---------- Toast ----------
   const psToast = document.getElementById('psToast');
   let toastTimer = null;
@@ -1607,121 +1522,27 @@
     }
   }, { passive: true });
 
-  // ---------- Catálogo compartido con la tienda (products/*.json) ----------
-  const PRODUCTS_DIR = 'products';
-
-  function pad(n) { return String(n).padStart(3, '0'); }
-  function fmtPrice(p) { return '$' + Number(p || 0).toLocaleString('es-CO'); }
+  // ---------- Utilidades ----------
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  // Mismo escaneo que la tienda: products/001.json, 002.json... hasta que no exista.
-  async function scanProducts() {
-    const products = [];
-    let i = 1;
-    while (true) {
-      const id = pad(i);
-      try {
-        const res = await fetch(`${PRODUCTS_DIR}/${id}.json`);
-        if (!res.ok) break; // No más productos
-        const data = await res.json();
-        products.push(data);
-        i++;
-      } catch (err) {
-        break; // Error de red o CORS: sin catálogo
-      }
-    }
-    return products;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  function prodCardHTML(p) {
-    const imgSrc = p.image ? `${PRODUCTS_DIR}/${p.image}` : '';
-    return `
-      <div class="prod-card">
-        ${imgSrc ? `<div class="prod-card-img"><img src="${esc(imgSrc)}" alt="${esc(p.title || '')}" loading="lazy" onerror="this.closest('.prod-card-img').remove()"></div>` : ''}
-        <h4>${esc(p.title || 'Pieza sin nombre')}</h4>
-        ${p.description ? `<p class="prod-card-desc">${esc(p.description)}</p>` : ''}
-        <div class="prod-card-foot">
-          ${p.badge ? `<span class="piece-tag piece-badge">${esc(p.badge)}</span>` : '<span></span>'}
-          ${p.price != null ? `<span class="prod-card-price">${fmtPrice(p.price)}</span>` : ''}
-        </div>
-      </div>`;
+
+  // ---------- Equipo: fallback si falta una foto ----------
+  function equipoImgFallback(img) {
+    const card = img.closest('.equipo-card');
+    if (!card || card.querySelector('.equipo-placeholder')) return;
+    const name = (card.querySelector('.equipo-dep') || card.querySelector('figcaption') || {}).textContent || '';
+    const ph = document.createElement('div');
+    ph.className = 'equipo-placeholder';
+    ph.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 11a3.2 3.2 0 1 0-3.2-3.2A3.2 3.2 0 0 0 9 11zm7.2 0a2.8 2.8 0 1 0-2.8-2.8A2.8 2.8 0 0 0 16.2 11zM9 12.9c-2.9 0-6 1.5-6 4.3V19h12v-1.8c0-2.8-3.1-4.3-6-4.3zm7.2.3c-.7 0-1.4.1-2 .3 1.1.9 1.8 2.1 1.8 3.7V19h6v-1.6c0-2.5-2.8-4.2-5.8-4.2z"/></svg><span>Foto grupal · ' + esc(name) + '</span>';
+    img.replaceWith(ph);
   }
-
-  function renderProductTabs(products) {
-    const tabsBox = document.getElementById('prodTabs');
-    const gridsBox = document.getElementById('prodGrids');
-    if (!tabsBox || !gridsBox) return;
-
-    if (!products.length) {
-      tabsBox.innerHTML = '';
-      gridsBox.innerHTML = '<p class="prod-empty">Muy pronto encontrarás aquí las piezas del catálogo.</p>';
-      return;
-    }
-
-    const cats = [];
-    products.forEach(p => {
-      const c = p.category || 'Catálogo';
-      if (!cats.includes(c)) cats.push(c);
-    });
-
-    tabsBox.innerHTML = cats.map((c, i) =>
-      `<button class="prod-tab${i === 0 ? ' active' : ''}" data-cat="${esc(c)}">${esc(c)}</button>`
-    ).join('');
-
-    gridsBox.innerHTML = cats.map((c, i) => {
-      const items = products.filter(p => (p.category || 'Catálogo') === c).slice(0, 3);
-      return `<div class="prod-grid reveal${i === 0 ? ' active' : ''}" data-cat="${esc(c)}">` +
-        items.map(prodCardHTML).join('') + '</div>';
-    }).join('');
-
-    tabsBox.querySelectorAll('.prod-tab').forEach(btn => {
-      btn.addEventListener('click', () => showProdTab(btn.dataset.cat, btn));
-    });
-    observeReveals(gridsBox);
-  }
-
-  function renderFeaturedPieces(products) {
-    const box = document.getElementById('featuredAccordion');
-    if (!box) return;
-
-    let featured = products.filter(p => p.badge); // los "destacados" llevan badge en el JSON
-    if (featured.length < 3) featured = products.slice(0, 3);
-    featured = featured.slice(0, 4);
-
-    if (!featured.length) {
-      box.innerHTML = '<div class="acc-item"><div class="acc-body" style="max-height:none"><div class="acc-body-inner"><p>Muy pronto encontrarás aquí las piezas destacadas del catálogo.</p></div></div></div>';
-      return;
-    }
-
-    box.innerHTML = featured.map((p, i) => `
-      <div class="acc-item piece-card">
-        <button class="acc-head" onclick="toggleAcc(this)">
-          <span class="acc-head-text"><span class="acc-num">${pad(i + 1)}</span><h3>${esc(p.title || 'Pieza sin nombre')}</h3></span>
-          <span class="acc-icon">+</span>
-        </button>
-        <div class="acc-body"><div class="acc-body-inner piece-detail">
-          ${p.image ? `<img class="piece-thumb" src="${PRODUCTS_DIR}/${esc(p.image)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
-          <div class="piece-text">
-            <p>${esc(p.description || 'Sin descripción.')}</p>
-            ${[p.material, p.dimensions].filter(v => v != null && v !== '').length ? `<p class="piece-meta">${[p.material, p.dimensions].filter(v => v != null && v !== '').map(esc).join(' · ')}</p>` : ''}
-            <div class="piece-tags">
-              ${p.category ? `<span class="piece-tag">${esc(p.category)}</span>` : ''}
-              ${p.badge ? `<span class="piece-tag piece-badge">${esc(p.badge)}</span>` : ''}
-              ${p.price != null ? `<span class="piece-tag">${fmtPrice(p.price)}</span>` : ''}
-            </div>
-          </div>
-        </div></div>
-      </div>`).join('');
-  }
-
-  async function loadCatalogSections() {
-    const products = await scanProducts();
-    renderFeaturedPieces(products);
-    renderProductTabs(products);
-  }
-  loadCatalogSections();
 
   // ---------- Cover logo — subtle metallic sheen that follows the cursor ----------
   (function () {
