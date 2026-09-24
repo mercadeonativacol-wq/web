@@ -8,11 +8,28 @@
   "images": [
     "001.png"
   ],
+  "variants": [
+    {
+      "color": "Rosa Vino",
+      "hex": "#b02a3c",
+      "image": "001.png"
+    },
+    {
+      "color": "Dorado",
+      "hex": "#b8862e",
+      "image": "006.png"
+    },
+    {
+      "color": "Vino",
+      "hex": "#781828",
+      "image": "007.png"
+    }
+  ],
   "embeds": [],
   "badge": "",
   "material": "Mostacillas y materiales textiles/metálicos",
   "dimensions": "Estándar",
-  "stock": 100000,
+  "stock": 10000,
   "tags": [
     "Nativa",
     "aretes",

@@ -1,8 +1,10 @@
 {
   "id": "006",
-  "title": "Arete Mandala del Sol",
-  "price": 20500,
-  "description": "Arete artesanal de inspiración floral, tejido con mostacillas en tonos dorados, blancos y rojos.",
+  "aliasOf": "001",
+  "variant": "Dorado",
+  "title": "Arete Mandala del Sol — Dorado",
+  "price": 20000,
+  "description": "Arete realizado con la técnica de tejido con mostacillas. Porta la elegancia de las artesanías con esta lujosa combinación de colores y sobriedad para el día a día.",
   "category": "Aretes",
   "image": "006.png",
   "images": [
@@ -12,9 +14,9 @@
   "badge": "",
   "material": "Mostacillas y materiales textiles/metálicos",
   "dimensions": "Estándar",
-  "stock": 100000,
+  "stock": 10000,
   "tags": [
-    "Cayena",
+    "Nativa",
     "aretes",
     "mostacillas",
     "dorado"
